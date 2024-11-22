@@ -1,0 +1,1212 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.1.5">
+    
+    
+      
+        <title>实验步骤 - 嵌入式计算实验（2021春季） | 哈工大（深圳）</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.21aed14c.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.196e0c26.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#7e56c2">
+        
+      
+    
+    
+    
+      
+        
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="deep-purple" data-md-color-accent="deep-purple">
+      
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="../.." title="嵌入式计算实验（2021春季） | 哈工大（深圳）" class="md-header-nav__button md-logo" aria-label="嵌入式计算实验（2021春季） | 哈工大（深圳）">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M220.8 123.3c1 .5 1.8 1.7 3 1.7 1.1 0 2.8-.4 2.9-1.5.2-1.4-1.9-2.3-3.2-2.9-1.7-.7-3.9-1-5.5-.1-.4.2-.8.7-.6 1.1.3 1.3 2.3 1.1 3.4 1.7zm-21.9 1.7c1.2 0 2-1.2 3-1.7 1.1-.6 3.1-.4 3.5-1.6.2-.4-.2-.9-.6-1.1-1.6-.9-3.8-.6-5.5.1-1.3.6-3.4 1.5-3.2 2.9.1 1 1.8 1.5 2.8 1.4zM420 403.8c-3.6-4-5.3-11.6-7.2-19.7-1.8-8.1-3.9-16.8-10.5-22.4-1.3-1.1-2.6-2.1-4-2.9-1.3-.8-2.7-1.5-4.1-2 9.2-27.3 5.6-54.5-3.7-79.1-11.4-30.1-31.3-56.4-46.5-74.4-17.1-21.5-33.7-41.9-33.4-72C311.1 85.4 315.7.1 234.8 0 132.4-.2 158 103.4 156.9 135.2c-1.7 23.4-6.4 41.8-22.5 64.7-18.9 22.5-45.5 58.8-58.1 96.7-6 17.9-8.8 36.1-6.2 53.3-6.5 5.8-11.4 14.7-16.6 20.2-4.2 4.3-10.3 5.9-17 8.3s-14 6-18.5 14.5c-2.1 3.9-2.8 8.1-2.8 12.4 0 3.9.6 7.9 1.2 11.8 1.2 8.1 2.5 15.7.8 20.8-5.2 14.4-5.9 24.4-2.2 31.7 3.8 7.3 11.4 10.5 20.1 12.3 17.3 3.6 40.8 2.7 59.3 12.5 19.8 10.4 39.9 14.1 55.9 10.4 11.6-2.6 21.1-9.6 25.9-20.2 12.5-.1 26.3-5.4 48.3-6.6 14.9-1.2 33.6 5.3 55.1 4.1.6 2.3 1.4 4.6 2.5 6.7v.1c8.3 16.7 23.8 24.3 40.3 23 16.6-1.3 34.1-11 48.3-27.9 13.6-16.4 36-23.2 50.9-32.2 7.4-4.5 13.4-10.1 13.9-18.3.4-8.2-4.4-17.3-15.5-29.7zM223.7 87.3c9.8-22.2 34.2-21.8 44-.4 6.5 14.2 3.6 30.9-4.3 40.4-1.6-.8-5.9-2.6-12.6-4.9 1.1-1.2 3.1-2.7 3.9-4.6 4.8-11.8-.2-27-9.1-27.3-7.3-.5-13.9 10.8-11.8 23-4.1-2-9.4-3.5-13-4.4-1-6.9-.3-14.6 2.9-21.8zM183 75.8c10.1 0 20.8 14.2 19.1 33.5-3.5 1-7.1 2.5-10.2 4.6 1.2-8.9-3.3-20.1-9.6-19.6-8.4.7-9.8 21.2-1.8 28.1 1 .8 1.9-.2-5.9 5.5-15.6-14.6-10.5-52.1 8.4-52.1zm-13.6 60.7c6.2-4.6 13.6-10 14.1-10.5 4.7-4.4 13.5-14.2 27.9-14.2 7.1 0 15.6 2.3 25.9 8.9 6.3 4.1 11.3 4.4 22.6 9.3 8.4 3.5 13.7 9.7 10.5 18.2-2.6 7.1-11 14.4-22.7 18.1-11.1 3.6-19.8 16-38.2 14.9-3.9-.2-7-1-9.6-2.1-8-3.5-12.2-10.4-20-15-8.6-4.8-13.2-10.4-14.7-15.3-1.4-4.9 0-9 4.2-12.3zm3.3 334c-2.7 35.1-43.9 34.4-75.3 18-29.9-15.8-68.6-6.5-76.5-21.9-2.4-4.7-2.4-12.7 2.6-26.4v-.2c2.4-7.6.6-16-.6-23.9-1.2-7.8-1.8-15 .9-20 3.5-6.7 8.5-9.1 14.8-11.3 10.3-3.7 11.8-3.4 19.6-9.9 5.5-5.7 9.5-12.9 14.3-18 5.1-5.5 10-8.1 17.7-6.9 8.1 1.2 15.1 6.8 21.9 16l19.6 35.6c9.5 19.9 43.1 48.4 41 68.9zm-1.4-25.9c-4.1-6.6-9.6-13.6-14.4-19.6 7.1 0 14.2-2.2 16.7-8.9 2.3-6.2 0-14.9-7.4-24.9-13.5-18.2-38.3-32.5-38.3-32.5-13.5-8.4-21.1-18.7-24.6-29.9s-3-23.3-.3-35.2c5.2-22.9 18.6-45.2 27.2-59.2 2.3-1.7.8 3.2-8.7 20.8-8.5 16.1-24.4 53.3-2.6 82.4.6-20.7 5.5-41.8 13.8-61.5 12-27.4 37.3-74.9 39.3-112.7 1.1.8 4.6 3.2 6.2 4.1 4.6 2.7 8.1 6.7 12.6 10.3 12.4 10 28.5 9.2 42.4 1.2 6.2-3.5 11.2-7.5 15.9-9 9.9-3.1 17.8-8.6 22.3-15 7.7 30.4 25.7 74.3 37.2 95.7 6.1 11.4 18.3 35.5 23.6 64.6 3.3-.1 7 .4 10.9 1.4 13.8-35.7-11.7-74.2-23.3-84.9-4.7-4.6-4.9-6.6-2.6-6.5 12.6 11.2 29.2 33.7 35.2 59 2.8 11.6 3.3 23.7.4 35.7 16.4 6.8 35.9 17.9 30.7 34.8-2.2-.1-3.2 0-4.2 0 3.2-10.1-3.9-17.6-22.8-26.1-19.6-8.6-36-8.6-38.3 12.5-12.1 4.2-18.3 14.7-21.4 27.3-2.8 11.2-3.6 24.7-4.4 39.9-.5 7.7-3.6 18-6.8 29-32.1 22.9-76.7 32.9-114.3 7.2zm257.4-11.5c-.9 16.8-41.2 19.9-63.2 46.5-13.2 15.7-29.4 24.4-43.6 25.5s-26.5-4.8-33.7-19.3c-4.7-11.1-2.4-23.1 1.1-36.3 3.7-14.2 9.2-28.8 9.9-40.6.8-15.2 1.7-28.5 4.2-38.7 2.6-10.3 6.6-17.2 13.7-21.1.3-.2.7-.3 1-.5.8 13.2 7.3 26.6 18.8 29.5 12.6 3.3 30.7-7.5 38.4-16.3 9-.3 15.7-.9 22.6 5.1 9.9 8.5 7.1 30.3 17.1 41.6 10.6 11.6 14 19.5 13.7 24.6zM173.3 148.7c2 1.9 4.7 4.5 8 7.1 6.6 5.2 15.8 10.6 27.3 10.6 11.6 0 22.5-5.9 31.8-10.8 4.9-2.6 10.9-7 14.8-10.4s5.9-6.3 3.1-6.6-2.6 2.6-6 5.1c-4.4 3.2-9.7 7.4-13.9 9.8-7.4 4.2-19.5 10.2-29.9 10.2s-18.7-4.8-24.9-9.7c-3.1-2.5-5.7-5-7.7-6.9-1.5-1.4-1.9-4.6-4.3-4.9-1.4-.1-1.8 3.7 1.7 6.5z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            嵌入式计算实验（2021春季） | 哈工大（深圳）
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              实验步骤
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://gitee.com/hitsz-cslab/embSys" title="前往 GitHub 仓库" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    EmbSys
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+
+  
+
+<nav class="md-tabs md-tabs--active" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+    
+    <a href="../.." class="md-tabs__link">
+      实验须知
+    </a>
+  </li>
+
+      
+        
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+      
+      <a href="../../GW3399/part1/" class="md-tabs__link">
+        实验平台简介
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+      
+      <a href="../../BootLoader/overview/" class="md-tabs__link">
+        BootLoader启动流程分析
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+      
+      <a href="../../lab1/overview/" class="md-tabs__link">
+        Lab1：Linux内核编译及烧录
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+      
+      <a href="../../lab2/overview/" class="md-tabs__link">
+        Lab2：U-Boot编程
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+      
+        
+      
+      <a href="../overview/" class="md-tabs__link md-tabs__link--active">
+        Lab3：基于HiLens的口罩识别系统设计
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="嵌入式计算实验（2021春季） | 哈工大（深圳）" class="md-nav__button md-logo" aria-label="嵌入式计算实验（2021春季） | 哈工大（深圳）">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M220.8 123.3c1 .5 1.8 1.7 3 1.7 1.1 0 2.8-.4 2.9-1.5.2-1.4-1.9-2.3-3.2-2.9-1.7-.7-3.9-1-5.5-.1-.4.2-.8.7-.6 1.1.3 1.3 2.3 1.1 3.4 1.7zm-21.9 1.7c1.2 0 2-1.2 3-1.7 1.1-.6 3.1-.4 3.5-1.6.2-.4-.2-.9-.6-1.1-1.6-.9-3.8-.6-5.5.1-1.3.6-3.4 1.5-3.2 2.9.1 1 1.8 1.5 2.8 1.4zM420 403.8c-3.6-4-5.3-11.6-7.2-19.7-1.8-8.1-3.9-16.8-10.5-22.4-1.3-1.1-2.6-2.1-4-2.9-1.3-.8-2.7-1.5-4.1-2 9.2-27.3 5.6-54.5-3.7-79.1-11.4-30.1-31.3-56.4-46.5-74.4-17.1-21.5-33.7-41.9-33.4-72C311.1 85.4 315.7.1 234.8 0 132.4-.2 158 103.4 156.9 135.2c-1.7 23.4-6.4 41.8-22.5 64.7-18.9 22.5-45.5 58.8-58.1 96.7-6 17.9-8.8 36.1-6.2 53.3-6.5 5.8-11.4 14.7-16.6 20.2-4.2 4.3-10.3 5.9-17 8.3s-14 6-18.5 14.5c-2.1 3.9-2.8 8.1-2.8 12.4 0 3.9.6 7.9 1.2 11.8 1.2 8.1 2.5 15.7.8 20.8-5.2 14.4-5.9 24.4-2.2 31.7 3.8 7.3 11.4 10.5 20.1 12.3 17.3 3.6 40.8 2.7 59.3 12.5 19.8 10.4 39.9 14.1 55.9 10.4 11.6-2.6 21.1-9.6 25.9-20.2 12.5-.1 26.3-5.4 48.3-6.6 14.9-1.2 33.6 5.3 55.1 4.1.6 2.3 1.4 4.6 2.5 6.7v.1c8.3 16.7 23.8 24.3 40.3 23 16.6-1.3 34.1-11 48.3-27.9 13.6-16.4 36-23.2 50.9-32.2 7.4-4.5 13.4-10.1 13.9-18.3.4-8.2-4.4-17.3-15.5-29.7zM223.7 87.3c9.8-22.2 34.2-21.8 44-.4 6.5 14.2 3.6 30.9-4.3 40.4-1.6-.8-5.9-2.6-12.6-4.9 1.1-1.2 3.1-2.7 3.9-4.6 4.8-11.8-.2-27-9.1-27.3-7.3-.5-13.9 10.8-11.8 23-4.1-2-9.4-3.5-13-4.4-1-6.9-.3-14.6 2.9-21.8zM183 75.8c10.1 0 20.8 14.2 19.1 33.5-3.5 1-7.1 2.5-10.2 4.6 1.2-8.9-3.3-20.1-9.6-19.6-8.4.7-9.8 21.2-1.8 28.1 1 .8 1.9-.2-5.9 5.5-15.6-14.6-10.5-52.1 8.4-52.1zm-13.6 60.7c6.2-4.6 13.6-10 14.1-10.5 4.7-4.4 13.5-14.2 27.9-14.2 7.1 0 15.6 2.3 25.9 8.9 6.3 4.1 11.3 4.4 22.6 9.3 8.4 3.5 13.7 9.7 10.5 18.2-2.6 7.1-11 14.4-22.7 18.1-11.1 3.6-19.8 16-38.2 14.9-3.9-.2-7-1-9.6-2.1-8-3.5-12.2-10.4-20-15-8.6-4.8-13.2-10.4-14.7-15.3-1.4-4.9 0-9 4.2-12.3zm3.3 334c-2.7 35.1-43.9 34.4-75.3 18-29.9-15.8-68.6-6.5-76.5-21.9-2.4-4.7-2.4-12.7 2.6-26.4v-.2c2.4-7.6.6-16-.6-23.9-1.2-7.8-1.8-15 .9-20 3.5-6.7 8.5-9.1 14.8-11.3 10.3-3.7 11.8-3.4 19.6-9.9 5.5-5.7 9.5-12.9 14.3-18 5.1-5.5 10-8.1 17.7-6.9 8.1 1.2 15.1 6.8 21.9 16l19.6 35.6c9.5 19.9 43.1 48.4 41 68.9zm-1.4-25.9c-4.1-6.6-9.6-13.6-14.4-19.6 7.1 0 14.2-2.2 16.7-8.9 2.3-6.2 0-14.9-7.4-24.9-13.5-18.2-38.3-32.5-38.3-32.5-13.5-8.4-21.1-18.7-24.6-29.9s-3-23.3-.3-35.2c5.2-22.9 18.6-45.2 27.2-59.2 2.3-1.7.8 3.2-8.7 20.8-8.5 16.1-24.4 53.3-2.6 82.4.6-20.7 5.5-41.8 13.8-61.5 12-27.4 37.3-74.9 39.3-112.7 1.1.8 4.6 3.2 6.2 4.1 4.6 2.7 8.1 6.7 12.6 10.3 12.4 10 28.5 9.2 42.4 1.2 6.2-3.5 11.2-7.5 15.9-9 9.9-3.1 17.8-8.6 22.3-15 7.7 30.4 25.7 74.3 37.2 95.7 6.1 11.4 18.3 35.5 23.6 64.6 3.3-.1 7 .4 10.9 1.4 13.8-35.7-11.7-74.2-23.3-84.9-4.7-4.6-4.9-6.6-2.6-6.5 12.6 11.2 29.2 33.7 35.2 59 2.8 11.6 3.3 23.7.4 35.7 16.4 6.8 35.9 17.9 30.7 34.8-2.2-.1-3.2 0-4.2 0 3.2-10.1-3.9-17.6-22.8-26.1-19.6-8.6-36-8.6-38.3 12.5-12.1 4.2-18.3 14.7-21.4 27.3-2.8 11.2-3.6 24.7-4.4 39.9-.5 7.7-3.6 18-6.8 29-32.1 22.9-76.7 32.9-114.3 7.2zm257.4-11.5c-.9 16.8-41.2 19.9-63.2 46.5-13.2 15.7-29.4 24.4-43.6 25.5s-26.5-4.8-33.7-19.3c-4.7-11.1-2.4-23.1 1.1-36.3 3.7-14.2 9.2-28.8 9.9-40.6.8-15.2 1.7-28.5 4.2-38.7 2.6-10.3 6.6-17.2 13.7-21.1.3-.2.7-.3 1-.5.8 13.2 7.3 26.6 18.8 29.5 12.6 3.3 30.7-7.5 38.4-16.3 9-.3 15.7-.9 22.6 5.1 9.9 8.5 7.1 30.3 17.1 41.6 10.6 11.6 14 19.5 13.7 24.6zM173.3 148.7c2 1.9 4.7 4.5 8 7.1 6.6 5.2 15.8 10.6 27.3 10.6 11.6 0 22.5-5.9 31.8-10.8 4.9-2.6 10.9-7 14.8-10.4s5.9-6.3 3.1-6.6-2.6 2.6-6 5.1c-4.4 3.2-9.7 7.4-13.9 9.8-7.4 4.2-19.5 10.2-29.9 10.2s-18.7-4.8-24.9-9.7c-3.1-2.5-5.7-5-7.7-6.9-1.5-1.4-1.9-4.6-4.3-4.9-1.4-.1-1.8 3.7 1.7 6.5z"/></svg>
+
+    </a>
+    嵌入式计算实验（2021春季） | 哈工大（深圳）
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://gitee.com/hitsz-cslab/embSys" title="前往 GitHub 仓库" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    EmbSys
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." class="md-nav__link">
+      实验须知
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../ojguide/" class="md-nav__link">
+      作业提交说明
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" >
+    <label class="md-nav__link" for="nav-3">
+      实验平台简介
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="实验平台简介" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon"></span>
+        实验平台简介
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../GW3399/part1/" class="md-nav__link">
+      GW3399简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../GW3399/part2/" class="md-nav__link">
+      远程登录方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../GW3399/part3/" class="md-nav__link">
+      常用的LINUX命令
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../GW3399/part4/" class="md-nav__link">
+      系统固件更新
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" >
+    <label class="md-nav__link" for="nav-4">
+      BootLoader启动流程分析
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="BootLoader启动流程分析" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon"></span>
+        BootLoader启动流程分析
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../BootLoader/overview/" class="md-nav__link">
+      BootLoader概述
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../BootLoader/theory/" class="md-nav__link">
+      RK3399 BootLoader的启动过程
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" >
+    <label class="md-nav__link" for="nav-5">
+      Lab1：Linux内核编译及烧录
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Lab1：Linux内核编译及烧录" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon"></span>
+        Lab1：Linux内核编译及烧录
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../lab1/overview/" class="md-nav__link">
+      实验概述
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../lab1/theory/" class="md-nav__link">
+      实验原理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../lab1/step/" class="md-nav__link">
+      实现步骤
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../lab1/submit/" class="md-nav__link">
+      验收与提交
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" >
+    <label class="md-nav__link" for="nav-6">
+      Lab2：U-Boot编程
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Lab2：U-Boot编程" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        <span class="md-nav__icon md-icon"></span>
+        Lab2：U-Boot编程
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../lab2/overview/" class="md-nav__link">
+      实验概述
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6-2" type="checkbox" id="nav-6-2" >
+    <label class="md-nav__link" for="nav-6-2">
+      实验原理
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="实验原理" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-2">
+        <span class="md-nav__icon md-icon"></span>
+        实验原理
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../lab2/uboot/" class="md-nav__link">
+      U-Boot命令实现及驱动模型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../lab2/gpio/" class="md-nav__link">
+      U-Boot操作GPIO
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../lab2/step/" class="md-nav__link">
+      实验步骤
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../lab2/submit/" class="md-nav__link">
+      验收与提交
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7" checked>
+    <label class="md-nav__link" for="nav-7">
+      Lab3：基于HiLens的口罩识别系统设计
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Lab3：基于HiLens的口罩识别系统设计" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        <span class="md-nav__icon md-icon"></span>
+        Lab3：基于HiLens的口罩识别系统设计
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../overview/" class="md-nav__link">
+      实验概述
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7-2" type="checkbox" id="nav-7-2" >
+    <label class="md-nav__link" for="nav-7-2">
+      实验原理
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="实验原理" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-2">
+        <span class="md-nav__icon md-icon"></span>
+        实验原理
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../i2c/" class="md-nav__link">
+      I2C协议及驱动概述
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../hilens/" class="md-nav__link">
+      基于HiLens的口罩识别
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        实验步骤
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" class="md-nav__link md-nav__link--active">
+      实验步骤
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-oled" class="md-nav__link">
+    1. 完成OLED的驱动开发
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 完成OLED的驱动开发">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    1.1 解压实验包
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-oled" class="md-nav__link">
+    1.2 编写OLED驱动程序
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13" class="md-nav__link">
+    1.3 编译驱动及测试程序
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14" class="md-nav__link">
+    1.4 驱动模块的加载与测试
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-display" class="md-nav__link">
+    2. display应用及客户端开发
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    3. 口罩识别技能开发
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 口罩识别技能开发">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-iam" class="md-nav__link">
+    3.1 登录华为IAM账户
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-hilens" class="md-nav__link">
+    3.2 HiLens激活
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-hilens_1" class="md-nav__link">
+    3.2 HiLens技能开发
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-hilens" class="md-nav__link">
+    3.3 HiLens技能管理
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../submit/" class="md-nav__link">
+      验收与提交
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-oled" class="md-nav__link">
+    1. 完成OLED的驱动开发
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 完成OLED的驱动开发">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    1.1 解压实验包
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-oled" class="md-nav__link">
+    1.2 编写OLED驱动程序
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13" class="md-nav__link">
+    1.3 编译驱动及测试程序
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14" class="md-nav__link">
+    1.4 驱动模块的加载与测试
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-display" class="md-nav__link">
+    2. display应用及客户端开发
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    3. 口罩识别技能开发
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 口罩识别技能开发">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-iam" class="md-nav__link">
+    3.1 登录华为IAM账户
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-hilens" class="md-nav__link">
+    3.2 HiLens激活
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-hilens_1" class="md-nav__link">
+    3.2 HiLens技能开发
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-hilens" class="md-nav__link">
+    3.3 HiLens技能管理
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="_1">实验步骤</h1>
+<h2 id="1-oled">1. 完成OLED的驱动开发</h2>
+<h3 id="11">1.1 解压实验包</h3>
+<p>&emsp;&emsp;首先将gw3399-driver.tar.gz拷贝到gw3399-sdk所在的目录下，使用tar命令解压。</p>
+<p>&emsp;&emsp;可见gw3399-driver目录结构如下：</p>
+<div class="highlight"><pre><span></span><code><span class="o">-</span> <span class="n">gw3399</span><span class="o">-</span><span class="n">driver</span>
+    <span class="o">|-</span> <span class="n">module</span>       <span class="cm">/* 驱动程序 */</span>
+        <span class="o">|-</span> <span class="n">ht16k33</span>      <span class="cm">/* 8x8LED点阵屏的驱动 */</span>
+        <span class="o">|-</span> <span class="n">ssd1316</span>      <span class="cm">/* OLED屏的驱动 */</span>
+    <span class="o">|-</span> <span class="n">app</span>          <span class="cm">/* 测试程序 */</span>
+    <span class="o">|-</span> <span class="n">output</span>       <span class="cm">/* 存放输出文件 */</span>
+</code></pre></div>
+<h3 id="12-oled">1.2 编写OLED驱动程序</h3>
+<div class="admonition 提示">
+<p class="admonition-title">提示</p>
+<p>本实验提供了8x8 LED点阵的I2C设备驱动程序，同学们可以参考该驱动程序来编写OLED的I2C设备驱动程序。</p>
+</div>
+<p>&emsp;&emsp;进入ssd1316目录，需要编写ssd1316.c 和Makefile 两个文件</p>
+<p>&emsp;&emsp;1. 实现OLED i2c设备驱动中的i2c_driver接口：dev_init()、dev_exit()、dev_i2c_remove()、
+&emsp;&emsp;dev_i2c_probe()、dev_i2c_register()，以及i2c_device_id设备ID表。</p>
+<p>&emsp;&emsp;2. 实现i2c设备所挂接的OLED读写接口：buffer_read()、buffer_write()</p>
+<h3 id="13">1.3 编译驱动及测试程序</h3>
+<p>&emsp;&emsp;进入ht16k33目录，通过make指令，编译驱动程序，生成ht16k33.ko文件：</p>
+<div class="highlight"><pre><span></span><code>$ <span class="nb">cd</span> ht16k33/
+$ make
+</code></pre></div>
+<p>&emsp;&emsp;将生成的.ko文件复制到output输出目录下，然后清理过程文件：</p>
+<div class="highlight"><pre><span></span><code>$ sudo cp ht16k33.ko ../../output/
+$ make clean
+</code></pre></div>
+<p>&emsp;&emsp;进入ssd1316目录，通过make指令，编译驱动程序，生成ssd1316.ko文件：</p>
+<div class="highlight"><pre><span></span><code>$ <span class="nb">cd</span> ../ssd1316/
+$ make
+</code></pre></div>
+<p>&emsp;&emsp;将生成的.ko文件复制到output输出目录下，然后清理过程文件：</p>
+<div class="highlight"><pre><span></span><code>$ sudo cp ssd1316.ko ../../output/
+$ make clean
+</code></pre></div>
+<p>&emsp;&emsp;进入app目录，通过make指令，编译驱动程序，生成可执行文件demo和udpfw：</p>
+<div class="highlight"><pre><span></span><code>$ <span class="nb">cd</span> ../../app/
+$ make
+</code></pre></div>
+<p>&emsp;&emsp;将生成的可执行文件复制到output输出目录下，然后清理过程文件：</p>
+<div class="highlight"><pre><span></span><code>$ sudo cp demo ../output/
+$ sudo cp udpfw ../output/
+$ make clean
+</code></pre></div>
+<p>&emsp;&emsp;最后，通过tar指令将output目录中的输出文件打包，使用MobaXterm tftp协议拷贝windows系统 D:/FirmWare，并清空output目录：</p>
+<div class="highlight"><pre><span></span><code>$ <span class="nb">cd</span> ../output/
+$ sudo tar -czvf ../mydriver.tar.gz ./
+$ <span class="nb">cd</span> ../
+$ sudo rm -rf output/*
+</code></pre></div>
+<h3 id="14">1.4 驱动模块的加载与测试</h3>
+<p>&emsp;&emsp;在实验1中，我们烧录了一个不带桌面的Ubuntu系统。此处为了能方便调试，同学们需要重新烧录一个带桌面的ubuntu系统。将服务器上的Ubuntu_Desktop.7z下载并解压，得到ubuntu-rootfs-20190609.img和相应的parameter.txt。利用实验1种讲述的烧录部分固件的方法，将该文件系统烧录到GW3399，从而获得带桌面的Ubuntu系统。（注意：文件系统比较大，烧录时间较长，请耐心等待。）</p>
+<p>&emsp;&emsp;烧录后将自动重启，进入Ubuntu系统。连接校园WIFI：HITSZ，并到浏览器中输入10.248.98.2网址，输入自己的上网账号和密码。</p>
+<div class="admonition 注意">
+<p class="admonition-title">注意</p>
+<p>为了增强WIFI信号，需要为GW3399接上WIFI天线。</p>
+</div>
+<p>&emsp;&emsp;将GW3399连接到网络后，用图形界面打开终端模拟器（也可通过屏幕键盘点击快捷键Ctrl+Alt+T），如图1所示。</p>
+<p><center><img src="../assets/5-1.png" width = 350></center>
+<center>图1 打开终端</center></p>
+<p>&emsp;&emsp;用ping指令检测GW3399与Windows系统的网络是否通畅。</p>
+<p>&emsp;&emsp;通过tftp服务，从Windows系统D:/FirmWare，下载mydriver.tar.gz</p>
+<div class="admonition 注意">
+<p class="admonition-title">注意</p>
+<p>这一步必须确保GW3399与Windows之间网络通畅。</p>
+</div>
+<p>&emsp;&emsp;解压mydriver.tar.gz到~/mydriver目录下：</p>
+<div class="highlight"><pre><span></span><code>$ sudo tar -xvzf mydriver.tar.gz
+</code></pre></div>
+<p>&emsp;&emsp;因为GW3399平板用户登录后，就把相关的音频设备给占用了，所以为了演示音频测试效果，我们**需要到GW3399的屏幕上做以下操作：**</p>
+<p>&emsp;&emsp;加载8x8点阵驱动和OLED屏驱动，然后运行测试程序：</p>
+<p>（<strong>注意：以下操作需要在GW3399平板上进行</strong>）</p>
+<div class="highlight"><pre><span></span><code>$ sudo insmod ht16k33.ko         <span class="c1"># 加载8x8点阵屏驱动</span>
+$ sudo insmod ssd1316.ko         <span class="c1"># 加载OLED屏驱动</span>
+$ sudo ./demo                    <span class="c1"># 运行测试程序</span>
+</code></pre></div>
+<p>&emsp;&emsp;运行成功后，4个LED来回闪烁、OLED屏上滚动显示当前TVOC测量值：</p>
+<p><center><img src="../assets/5-2.png" width = 300></center>
+<center>图1 测试OLED</center></p>
+<p>&emsp;&emsp;接下来，可通过两个按键，切换工作状态。若OLED可以正常显示字符，则驱动成功。</p>
+<h2 id="2-display">2. display应用及客户端开发</h2>
+<p>&emsp;&emsp;编写mask_detection.py，该程序主要是socket客户端。客户端接收服务器的口罩识别结果，并调用display程序进行显示。</p>
+<p>&emsp;&emsp;补全实验包中的display.c源码文件，使得其能够根据客户端的接收到的数据，分别在8*8 LED点阵和OLED显示屏上显示识别结果。</p>
+<p>&emsp;&emsp;要求：</p>
+<p>&emsp;&emsp;（1）识别到已佩戴口罩时，OLED需显示“has mask”字样，且LED点阵需显示一张笑脸；</p>
+<p>&emsp;&emsp;（2）识别到未佩戴口罩时，OLED需显示“no mask”字样，且LED点阵需显示一张哭脸；</p>
+<p>&emsp;&emsp;（3）未识别到人脸时，OLED需显示“unknown”字样，且LED点阵需显示一个问号。</p>
+<div class="admonition 注意">
+<p class="admonition-title">注意</p>
+<p>此处的socket仅作为一种参考方案，即服务器和客户端之间的通信方式不作限制，同学们可自行发挥。</p>
+<p>此外，客户端并非必须要使用Python实现，同学们也可自行发挥。</p>
+</div>
+<h2 id="3">3. 口罩识别技能开发</h2>
+<h3 id="31-iam">3.1 登录华为IAM账户</h3>
+<p>&emsp;&emsp;打开浏览器，访问<a href="https://auth.huaweicloud.com/authui/login.html?service=https%3A%2F%2Fconsole.huaweicloud.com%2Fhilens%2F#/login">华为云IAM用户的登录页面</a>。在登录框的第一行处输入“t2_test1”，在第二行处输入“embsysX”（X = 组号 - 1，即如果组号为7，那么X为6），初始密码是“HITSZ2021”，如图3所示。</p>
+<p><center><img src="../assets/5-3.png" width = 350></center>
+<center>图3 登录IAM账户</center></p>
+<p>&emsp;&emsp;登录成功后，需设置初始密码。</p>
+<div class="admonition 友情提醒">
+<p class="admonition-title">友情提醒</p>
+<p>请务必记住所设置的密码。若忘记密码，可通过登录页面的“忘记密码”找回密码。若找回失败，请及时联系老师重置密码。</p>
+</div>
+<p>&emsp;&emsp;设置新密码后，将服务器区切换到“华北-北京四”，然后同意HiLens相关的授权。</p>
+<p>&emsp;&emsp;然后，点击页面左侧中间的小箭头，展开菜单，如图4所示。</p>
+<p><center><img src="../assets/5-4.png" width = 200></center>
+<center>图4 展开控制台菜单</center></p>
+<p>&emsp;&emsp;接着，在控制台菜单的顶部，把当前的工作空间切换到workspace_embsysX（X = 组号 - 1），如图5所示。</p>
+<p><center><img src="../assets/5-5.png" width = 220></center>
+<center>图5 切换工作空间</center></p>
+<h3 id="32-hilens">3.2 HiLens激活</h3>
+<p>&emsp;&emsp;切换工作空间后，打开HiLens管理控制台的页面，点击“设备管理”-&gt;“设备列表”，查看列表中的HiLens设备，如图6所示。</p>
+<p><center><img src="../assets/5-6.png" width = 550></center>
+<center>图6 查看HiLens设备</center></p>
+<p>&emsp;&emsp;若“基础技能权限”处显示红字“未激活”，则需要先激活设备才能进行后续的开发；若显示绿字“已激活”，则可以跳过激活的步骤，直接开始技能开发。</p>
+<p>&emsp;&emsp;欲激活HiLens，只需点击“权限激活”-&gt;“测试样机激活”，然后输入HiLens背部标签上的20位SN编码即可，如图7、图8所示。</p>
+<p><center><img src="../assets/5-7.png"></center>
+<center>图7 激活HiLens</center></p>
+<p><center><img src="../assets/5-8.png" width = 500></center>
+<center>图8 查看HiLens的SN编号</center></p>
+<h3 id="32-hilens_1">3.2 HiLens技能开发</h3>
+<p>&emsp;&emsp;登录账号后，打开HiLens管理控制台的页面，展开菜单栏下的“技能开发”，点击“HiLens Studio”，如图9所示。</p>
+<p><center><img src="../assets/5-9.png"></center>
+<center>图9 点击“技能开发”下的“HiLens Studio”</center></p>
+<p>&emsp;&emsp;随后将弹出如图10所示的HiLens Studio指引的页面，等候其自动完成即可。</p>
+<p><center><img src="../assets/5-10.png"></center>
+<center>图10 等待页面</center></p>
+<p>&emsp;&emsp;接下来将进入HiLens Studio页面。此时，点击File-&gt;New Project，或点击“Getting Started”页面下的“New Project”以新建技能，如图11所示。</p>
+<p><center><img src="../assets/5-11.png"></center>
+<center>图11 新建技能</center></p>
+<p>&emsp;&emsp;随后将弹出一个单独的页面，选择口罩识别即可，如图12所示。</p>
+<p><center><img src="../assets/5-12.png" width = 500></center>
+<center>图12 新建口罩识别技能</center></p>
+<p>&emsp;&emsp;根据需要修改左侧的工程基本信息，确认无误后点击“确定”按钮，如图13所示。</p>
+<p><center><img src="../assets/5-13.png"></center>
+<center>图13 查看和编辑工程的基本信息</center></p>
+<p>&emsp;&emsp;打开src文件夹下的main.py和utils.py，修改相关代码。</p>
+<div class="admonition tips">
+<p class="admonition-title">Tips</p>
+<p>HiLens Studio会自动保存修改过的源文件。</p>
+</div>
+<p>&emsp;&emsp;技能编写完成后，可对其进行调试。</p>
+<p>&emsp;&emsp;调试前，先从菜单栏选择输入的视频数据源，如图14所示。</p>
+<p><center><img src="../assets/5-14.png"></center>
+<center>图14 选择调试的数据源</center></p>
+<p>&emsp;&emsp;调试时，可利用菜单栏的Debug菜单或菜单栏右侧的快捷按钮，如图15所示。</p>
+<p><center><img src="../assets/5-15.png"></center>
+<center>图15 调试入口</center></p>
+<h3 id="33-hilens">3.3 HiLens技能管理</h3>
+<p>&emsp;&emsp;技能就绪后，打开右侧的HiLens Widget页面，在HiLens上安装技能，如图16所示。</p>
+<p><center><img src="../assets/5-16.png"></center>
+<center>图16 安装技能到HiLens</center></p>
+<p>&emsp;&emsp;安装完成后，点击“Start”启动技能，如图17所示。</p>
+<p><center><img src="../assets/5-17.png" width = 300></center>
+<center>图17 启动安装好的技能</center></p>
+<p>&emsp;&emsp;技能启动后，既可以在HiLens Studio中重启、停止技能，也可以在HiLens管理控制台的“设备管理”-&gt;“设备列表”中查看和操作技能的运行状态，如图18所示。</p>
+<p><center><img src="../assets/5-18.png"></center>
+<center>图18 查看和管理技能</center></p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../hilens/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  上一页
+                </span>
+                基于HiLens的口罩识别
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../submit/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  下一页
+                </span>
+                验收与提交
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2019 - 2021 哈尔滨工业大学（深圳）
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/vendor.7e0ee788.min.js"></script>
+      <script src="../../assets/javascripts/bundle.b3a72adc.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../..",
+          features: ['navigation.tabs'],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.4ac00218.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>

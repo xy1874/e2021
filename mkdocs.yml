@@ -1,0 +1,74 @@
+site_name: 嵌入式计算实验（2021春季） | 哈工大（深圳）
+copyright: 'Copyright &copy; 2019 - 2021 哈尔滨工业大学（深圳）'
+repo_name: 'EmbSys'
+repo_url: 'https://gitee.com/hitsz-cslab/embSys'
+
+markdown_extensions:
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:pymdownx.emoji.twemoji
+      emoji_generator: !!python/name:pymdownx.emoji.to_svg
+  - pymdownx.inlinehilite
+  - pymdownx.magiclink
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tabbed
+  - pymdownx.tilde
+  - admonition
+  - mdx_math:
+      enable_dollar_delimiter: True
+
+extra_javascript:
+  - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML
+  # - mathjaxhelper.js
+
+
+theme:
+  language: 'zh'
+  name: material
+  features:
+    - navigation.tabs
+  icon:
+    logo: fontawesome/brands/linux
+    repo: fontawesome/brands/git-alt
+    # favicon: fontawesome/solid/microchip
+  palette:
+    primary: 'deep-purple'
+    accent: 'deep-purple'
+nav:
+  - 实验须知: index.md
+  - 作业提交说明: ojguide.md
+  - 实验平台简介:
+    - GW3399简介: GW3399/part1.md
+    - 远程登录方法: GW3399/part2.md
+    - 常用的LINUX命令: GW3399/part3.md
+    - 系统固件更新: GW3399/part4.md
+  - BootLoader启动流程分析: 
+    - BootLoader概述: BootLoader/overview.md 
+    - RK3399 BootLoader的启动过程: BootLoader/theory.md
+  - Lab1：Linux内核编译及烧录:
+    - 实验概述: lab1/overview.md
+    - 实验原理: lab1/theory.md
+    - 实现步骤: lab1/step.md
+    - 验收与提交: lab1/submit.md
+  - Lab2：U-Boot编程:
+    - 实验概述: lab2/overview.md
+    - 实验原理:
+      - U-Boot命令实现及驱动模型: lab2/uboot.md
+      - U-Boot操作GPIO: lab2/gpio.md
+    - 实验步骤: lab2/step.md
+    - 验收与提交: lab2/submit.md
+  - Lab3：基于HiLens的口罩识别系统设计:
+    - 实验概述: lab3/overview.md
+    - 实验原理:
+      - I2C协议及驱动概述: lab3/i2c.md
+      - 基于HiLens的口罩识别: lab3/hilens.md
+    - 实验步骤: lab3/step.md
+    - 验收与提交: lab3/submit.md

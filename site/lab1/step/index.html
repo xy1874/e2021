@@ -1,0 +1,1189 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.1.5">
+    
+    
+      
+        <title>实现步骤 - 嵌入式计算实验（2021春季） | 哈工大（深圳）</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.21aed14c.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.196e0c26.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#7e56c2">
+        
+      
+    
+    
+    
+      
+        
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="deep-purple" data-md-color-accent="deep-purple">
+      
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="../.." title="嵌入式计算实验（2021春季） | 哈工大（深圳）" class="md-header-nav__button md-logo" aria-label="嵌入式计算实验（2021春季） | 哈工大（深圳）">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M220.8 123.3c1 .5 1.8 1.7 3 1.7 1.1 0 2.8-.4 2.9-1.5.2-1.4-1.9-2.3-3.2-2.9-1.7-.7-3.9-1-5.5-.1-.4.2-.8.7-.6 1.1.3 1.3 2.3 1.1 3.4 1.7zm-21.9 1.7c1.2 0 2-1.2 3-1.7 1.1-.6 3.1-.4 3.5-1.6.2-.4-.2-.9-.6-1.1-1.6-.9-3.8-.6-5.5.1-1.3.6-3.4 1.5-3.2 2.9.1 1 1.8 1.5 2.8 1.4zM420 403.8c-3.6-4-5.3-11.6-7.2-19.7-1.8-8.1-3.9-16.8-10.5-22.4-1.3-1.1-2.6-2.1-4-2.9-1.3-.8-2.7-1.5-4.1-2 9.2-27.3 5.6-54.5-3.7-79.1-11.4-30.1-31.3-56.4-46.5-74.4-17.1-21.5-33.7-41.9-33.4-72C311.1 85.4 315.7.1 234.8 0 132.4-.2 158 103.4 156.9 135.2c-1.7 23.4-6.4 41.8-22.5 64.7-18.9 22.5-45.5 58.8-58.1 96.7-6 17.9-8.8 36.1-6.2 53.3-6.5 5.8-11.4 14.7-16.6 20.2-4.2 4.3-10.3 5.9-17 8.3s-14 6-18.5 14.5c-2.1 3.9-2.8 8.1-2.8 12.4 0 3.9.6 7.9 1.2 11.8 1.2 8.1 2.5 15.7.8 20.8-5.2 14.4-5.9 24.4-2.2 31.7 3.8 7.3 11.4 10.5 20.1 12.3 17.3 3.6 40.8 2.7 59.3 12.5 19.8 10.4 39.9 14.1 55.9 10.4 11.6-2.6 21.1-9.6 25.9-20.2 12.5-.1 26.3-5.4 48.3-6.6 14.9-1.2 33.6 5.3 55.1 4.1.6 2.3 1.4 4.6 2.5 6.7v.1c8.3 16.7 23.8 24.3 40.3 23 16.6-1.3 34.1-11 48.3-27.9 13.6-16.4 36-23.2 50.9-32.2 7.4-4.5 13.4-10.1 13.9-18.3.4-8.2-4.4-17.3-15.5-29.7zM223.7 87.3c9.8-22.2 34.2-21.8 44-.4 6.5 14.2 3.6 30.9-4.3 40.4-1.6-.8-5.9-2.6-12.6-4.9 1.1-1.2 3.1-2.7 3.9-4.6 4.8-11.8-.2-27-9.1-27.3-7.3-.5-13.9 10.8-11.8 23-4.1-2-9.4-3.5-13-4.4-1-6.9-.3-14.6 2.9-21.8zM183 75.8c10.1 0 20.8 14.2 19.1 33.5-3.5 1-7.1 2.5-10.2 4.6 1.2-8.9-3.3-20.1-9.6-19.6-8.4.7-9.8 21.2-1.8 28.1 1 .8 1.9-.2-5.9 5.5-15.6-14.6-10.5-52.1 8.4-52.1zm-13.6 60.7c6.2-4.6 13.6-10 14.1-10.5 4.7-4.4 13.5-14.2 27.9-14.2 7.1 0 15.6 2.3 25.9 8.9 6.3 4.1 11.3 4.4 22.6 9.3 8.4 3.5 13.7 9.7 10.5 18.2-2.6 7.1-11 14.4-22.7 18.1-11.1 3.6-19.8 16-38.2 14.9-3.9-.2-7-1-9.6-2.1-8-3.5-12.2-10.4-20-15-8.6-4.8-13.2-10.4-14.7-15.3-1.4-4.9 0-9 4.2-12.3zm3.3 334c-2.7 35.1-43.9 34.4-75.3 18-29.9-15.8-68.6-6.5-76.5-21.9-2.4-4.7-2.4-12.7 2.6-26.4v-.2c2.4-7.6.6-16-.6-23.9-1.2-7.8-1.8-15 .9-20 3.5-6.7 8.5-9.1 14.8-11.3 10.3-3.7 11.8-3.4 19.6-9.9 5.5-5.7 9.5-12.9 14.3-18 5.1-5.5 10-8.1 17.7-6.9 8.1 1.2 15.1 6.8 21.9 16l19.6 35.6c9.5 19.9 43.1 48.4 41 68.9zm-1.4-25.9c-4.1-6.6-9.6-13.6-14.4-19.6 7.1 0 14.2-2.2 16.7-8.9 2.3-6.2 0-14.9-7.4-24.9-13.5-18.2-38.3-32.5-38.3-32.5-13.5-8.4-21.1-18.7-24.6-29.9s-3-23.3-.3-35.2c5.2-22.9 18.6-45.2 27.2-59.2 2.3-1.7.8 3.2-8.7 20.8-8.5 16.1-24.4 53.3-2.6 82.4.6-20.7 5.5-41.8 13.8-61.5 12-27.4 37.3-74.9 39.3-112.7 1.1.8 4.6 3.2 6.2 4.1 4.6 2.7 8.1 6.7 12.6 10.3 12.4 10 28.5 9.2 42.4 1.2 6.2-3.5 11.2-7.5 15.9-9 9.9-3.1 17.8-8.6 22.3-15 7.7 30.4 25.7 74.3 37.2 95.7 6.1 11.4 18.3 35.5 23.6 64.6 3.3-.1 7 .4 10.9 1.4 13.8-35.7-11.7-74.2-23.3-84.9-4.7-4.6-4.9-6.6-2.6-6.5 12.6 11.2 29.2 33.7 35.2 59 2.8 11.6 3.3 23.7.4 35.7 16.4 6.8 35.9 17.9 30.7 34.8-2.2-.1-3.2 0-4.2 0 3.2-10.1-3.9-17.6-22.8-26.1-19.6-8.6-36-8.6-38.3 12.5-12.1 4.2-18.3 14.7-21.4 27.3-2.8 11.2-3.6 24.7-4.4 39.9-.5 7.7-3.6 18-6.8 29-32.1 22.9-76.7 32.9-114.3 7.2zm257.4-11.5c-.9 16.8-41.2 19.9-63.2 46.5-13.2 15.7-29.4 24.4-43.6 25.5s-26.5-4.8-33.7-19.3c-4.7-11.1-2.4-23.1 1.1-36.3 3.7-14.2 9.2-28.8 9.9-40.6.8-15.2 1.7-28.5 4.2-38.7 2.6-10.3 6.6-17.2 13.7-21.1.3-.2.7-.3 1-.5.8 13.2 7.3 26.6 18.8 29.5 12.6 3.3 30.7-7.5 38.4-16.3 9-.3 15.7-.9 22.6 5.1 9.9 8.5 7.1 30.3 17.1 41.6 10.6 11.6 14 19.5 13.7 24.6zM173.3 148.7c2 1.9 4.7 4.5 8 7.1 6.6 5.2 15.8 10.6 27.3 10.6 11.6 0 22.5-5.9 31.8-10.8 4.9-2.6 10.9-7 14.8-10.4s5.9-6.3 3.1-6.6-2.6 2.6-6 5.1c-4.4 3.2-9.7 7.4-13.9 9.8-7.4 4.2-19.5 10.2-29.9 10.2s-18.7-4.8-24.9-9.7c-3.1-2.5-5.7-5-7.7-6.9-1.5-1.4-1.9-4.6-4.3-4.9-1.4-.1-1.8 3.7 1.7 6.5z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            嵌入式计算实验（2021春季） | 哈工大（深圳）
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              实现步骤
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://gitee.com/hitsz-cslab/embSys" title="前往 GitHub 仓库" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    EmbSys
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+
+  
+
+<nav class="md-tabs md-tabs--active" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+    
+    <a href="../.." class="md-tabs__link">
+      实验须知
+    </a>
+  </li>
+
+      
+        
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+      
+      <a href="../../GW3399/part1/" class="md-tabs__link">
+        实验平台简介
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+      
+      <a href="../../BootLoader/overview/" class="md-tabs__link">
+        BootLoader启动流程分析
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+      
+        
+      
+      <a href="../overview/" class="md-tabs__link md-tabs__link--active">
+        Lab1：Linux内核编译及烧录
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+      
+      <a href="../../lab2/overview/" class="md-tabs__link">
+        Lab2：U-Boot编程
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+      
+      <a href="../../lab3/overview/" class="md-tabs__link">
+        Lab3：基于HiLens的口罩识别系统设计
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="嵌入式计算实验（2021春季） | 哈工大（深圳）" class="md-nav__button md-logo" aria-label="嵌入式计算实验（2021春季） | 哈工大（深圳）">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M220.8 123.3c1 .5 1.8 1.7 3 1.7 1.1 0 2.8-.4 2.9-1.5.2-1.4-1.9-2.3-3.2-2.9-1.7-.7-3.9-1-5.5-.1-.4.2-.8.7-.6 1.1.3 1.3 2.3 1.1 3.4 1.7zm-21.9 1.7c1.2 0 2-1.2 3-1.7 1.1-.6 3.1-.4 3.5-1.6.2-.4-.2-.9-.6-1.1-1.6-.9-3.8-.6-5.5.1-1.3.6-3.4 1.5-3.2 2.9.1 1 1.8 1.5 2.8 1.4zM420 403.8c-3.6-4-5.3-11.6-7.2-19.7-1.8-8.1-3.9-16.8-10.5-22.4-1.3-1.1-2.6-2.1-4-2.9-1.3-.8-2.7-1.5-4.1-2 9.2-27.3 5.6-54.5-3.7-79.1-11.4-30.1-31.3-56.4-46.5-74.4-17.1-21.5-33.7-41.9-33.4-72C311.1 85.4 315.7.1 234.8 0 132.4-.2 158 103.4 156.9 135.2c-1.7 23.4-6.4 41.8-22.5 64.7-18.9 22.5-45.5 58.8-58.1 96.7-6 17.9-8.8 36.1-6.2 53.3-6.5 5.8-11.4 14.7-16.6 20.2-4.2 4.3-10.3 5.9-17 8.3s-14 6-18.5 14.5c-2.1 3.9-2.8 8.1-2.8 12.4 0 3.9.6 7.9 1.2 11.8 1.2 8.1 2.5 15.7.8 20.8-5.2 14.4-5.9 24.4-2.2 31.7 3.8 7.3 11.4 10.5 20.1 12.3 17.3 3.6 40.8 2.7 59.3 12.5 19.8 10.4 39.9 14.1 55.9 10.4 11.6-2.6 21.1-9.6 25.9-20.2 12.5-.1 26.3-5.4 48.3-6.6 14.9-1.2 33.6 5.3 55.1 4.1.6 2.3 1.4 4.6 2.5 6.7v.1c8.3 16.7 23.8 24.3 40.3 23 16.6-1.3 34.1-11 48.3-27.9 13.6-16.4 36-23.2 50.9-32.2 7.4-4.5 13.4-10.1 13.9-18.3.4-8.2-4.4-17.3-15.5-29.7zM223.7 87.3c9.8-22.2 34.2-21.8 44-.4 6.5 14.2 3.6 30.9-4.3 40.4-1.6-.8-5.9-2.6-12.6-4.9 1.1-1.2 3.1-2.7 3.9-4.6 4.8-11.8-.2-27-9.1-27.3-7.3-.5-13.9 10.8-11.8 23-4.1-2-9.4-3.5-13-4.4-1-6.9-.3-14.6 2.9-21.8zM183 75.8c10.1 0 20.8 14.2 19.1 33.5-3.5 1-7.1 2.5-10.2 4.6 1.2-8.9-3.3-20.1-9.6-19.6-8.4.7-9.8 21.2-1.8 28.1 1 .8 1.9-.2-5.9 5.5-15.6-14.6-10.5-52.1 8.4-52.1zm-13.6 60.7c6.2-4.6 13.6-10 14.1-10.5 4.7-4.4 13.5-14.2 27.9-14.2 7.1 0 15.6 2.3 25.9 8.9 6.3 4.1 11.3 4.4 22.6 9.3 8.4 3.5 13.7 9.7 10.5 18.2-2.6 7.1-11 14.4-22.7 18.1-11.1 3.6-19.8 16-38.2 14.9-3.9-.2-7-1-9.6-2.1-8-3.5-12.2-10.4-20-15-8.6-4.8-13.2-10.4-14.7-15.3-1.4-4.9 0-9 4.2-12.3zm3.3 334c-2.7 35.1-43.9 34.4-75.3 18-29.9-15.8-68.6-6.5-76.5-21.9-2.4-4.7-2.4-12.7 2.6-26.4v-.2c2.4-7.6.6-16-.6-23.9-1.2-7.8-1.8-15 .9-20 3.5-6.7 8.5-9.1 14.8-11.3 10.3-3.7 11.8-3.4 19.6-9.9 5.5-5.7 9.5-12.9 14.3-18 5.1-5.5 10-8.1 17.7-6.9 8.1 1.2 15.1 6.8 21.9 16l19.6 35.6c9.5 19.9 43.1 48.4 41 68.9zm-1.4-25.9c-4.1-6.6-9.6-13.6-14.4-19.6 7.1 0 14.2-2.2 16.7-8.9 2.3-6.2 0-14.9-7.4-24.9-13.5-18.2-38.3-32.5-38.3-32.5-13.5-8.4-21.1-18.7-24.6-29.9s-3-23.3-.3-35.2c5.2-22.9 18.6-45.2 27.2-59.2 2.3-1.7.8 3.2-8.7 20.8-8.5 16.1-24.4 53.3-2.6 82.4.6-20.7 5.5-41.8 13.8-61.5 12-27.4 37.3-74.9 39.3-112.7 1.1.8 4.6 3.2 6.2 4.1 4.6 2.7 8.1 6.7 12.6 10.3 12.4 10 28.5 9.2 42.4 1.2 6.2-3.5 11.2-7.5 15.9-9 9.9-3.1 17.8-8.6 22.3-15 7.7 30.4 25.7 74.3 37.2 95.7 6.1 11.4 18.3 35.5 23.6 64.6 3.3-.1 7 .4 10.9 1.4 13.8-35.7-11.7-74.2-23.3-84.9-4.7-4.6-4.9-6.6-2.6-6.5 12.6 11.2 29.2 33.7 35.2 59 2.8 11.6 3.3 23.7.4 35.7 16.4 6.8 35.9 17.9 30.7 34.8-2.2-.1-3.2 0-4.2 0 3.2-10.1-3.9-17.6-22.8-26.1-19.6-8.6-36-8.6-38.3 12.5-12.1 4.2-18.3 14.7-21.4 27.3-2.8 11.2-3.6 24.7-4.4 39.9-.5 7.7-3.6 18-6.8 29-32.1 22.9-76.7 32.9-114.3 7.2zm257.4-11.5c-.9 16.8-41.2 19.9-63.2 46.5-13.2 15.7-29.4 24.4-43.6 25.5s-26.5-4.8-33.7-19.3c-4.7-11.1-2.4-23.1 1.1-36.3 3.7-14.2 9.2-28.8 9.9-40.6.8-15.2 1.7-28.5 4.2-38.7 2.6-10.3 6.6-17.2 13.7-21.1.3-.2.7-.3 1-.5.8 13.2 7.3 26.6 18.8 29.5 12.6 3.3 30.7-7.5 38.4-16.3 9-.3 15.7-.9 22.6 5.1 9.9 8.5 7.1 30.3 17.1 41.6 10.6 11.6 14 19.5 13.7 24.6zM173.3 148.7c2 1.9 4.7 4.5 8 7.1 6.6 5.2 15.8 10.6 27.3 10.6 11.6 0 22.5-5.9 31.8-10.8 4.9-2.6 10.9-7 14.8-10.4s5.9-6.3 3.1-6.6-2.6 2.6-6 5.1c-4.4 3.2-9.7 7.4-13.9 9.8-7.4 4.2-19.5 10.2-29.9 10.2s-18.7-4.8-24.9-9.7c-3.1-2.5-5.7-5-7.7-6.9-1.5-1.4-1.9-4.6-4.3-4.9-1.4-.1-1.8 3.7 1.7 6.5z"/></svg>
+
+    </a>
+    嵌入式计算实验（2021春季） | 哈工大（深圳）
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://gitee.com/hitsz-cslab/embSys" title="前往 GitHub 仓库" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    EmbSys
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." class="md-nav__link">
+      实验须知
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../ojguide/" class="md-nav__link">
+      作业提交说明
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" >
+    <label class="md-nav__link" for="nav-3">
+      实验平台简介
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="实验平台简介" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon"></span>
+        实验平台简介
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../GW3399/part1/" class="md-nav__link">
+      GW3399简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../GW3399/part2/" class="md-nav__link">
+      远程登录方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../GW3399/part3/" class="md-nav__link">
+      常用的LINUX命令
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../GW3399/part4/" class="md-nav__link">
+      系统固件更新
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" >
+    <label class="md-nav__link" for="nav-4">
+      BootLoader启动流程分析
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="BootLoader启动流程分析" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon"></span>
+        BootLoader启动流程分析
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../BootLoader/overview/" class="md-nav__link">
+      BootLoader概述
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../BootLoader/theory/" class="md-nav__link">
+      RK3399 BootLoader的启动过程
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" checked>
+    <label class="md-nav__link" for="nav-5">
+      Lab1：Linux内核编译及烧录
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Lab1：Linux内核编译及烧录" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon"></span>
+        Lab1：Linux内核编译及烧录
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../overview/" class="md-nav__link">
+      实验概述
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../theory/" class="md-nav__link">
+      实验原理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        实现步骤
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" class="md-nav__link md-nav__link--active">
+      实现步骤
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    1. 导入虚拟机
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-sdk" class="md-nav__link">
+    2.  获取系统sdk
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-u-boot" class="md-nav__link">
+    3.  编译U-Boot
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-linux" class="md-nav__link">
+    4.  编译Linux内核
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-ubuntu" class="md-nav__link">
+    5.  Ubuntu文件系统制作
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    6.  系统固件打包
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    7. 启动新固件
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../submit/" class="md-nav__link">
+      验收与提交
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" >
+    <label class="md-nav__link" for="nav-6">
+      Lab2：U-Boot编程
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Lab2：U-Boot编程" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        <span class="md-nav__icon md-icon"></span>
+        Lab2：U-Boot编程
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../lab2/overview/" class="md-nav__link">
+      实验概述
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6-2" type="checkbox" id="nav-6-2" >
+    <label class="md-nav__link" for="nav-6-2">
+      实验原理
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="实验原理" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-2">
+        <span class="md-nav__icon md-icon"></span>
+        实验原理
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../lab2/uboot/" class="md-nav__link">
+      U-Boot命令实现及驱动模型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../lab2/gpio/" class="md-nav__link">
+      U-Boot操作GPIO
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../lab2/step/" class="md-nav__link">
+      实验步骤
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../lab2/submit/" class="md-nav__link">
+      验收与提交
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7" >
+    <label class="md-nav__link" for="nav-7">
+      Lab3：基于HiLens的口罩识别系统设计
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Lab3：基于HiLens的口罩识别系统设计" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        <span class="md-nav__icon md-icon"></span>
+        Lab3：基于HiLens的口罩识别系统设计
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../lab3/overview/" class="md-nav__link">
+      实验概述
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7-2" type="checkbox" id="nav-7-2" >
+    <label class="md-nav__link" for="nav-7-2">
+      实验原理
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="实验原理" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-2">
+        <span class="md-nav__icon md-icon"></span>
+        实验原理
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../lab3/i2c/" class="md-nav__link">
+      I2C协议及驱动概述
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../lab3/hilens/" class="md-nav__link">
+      基于HiLens的口罩识别
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../lab3/step/" class="md-nav__link">
+      实验步骤
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../lab3/submit/" class="md-nav__link">
+      验收与提交
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    1. 导入虚拟机
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-sdk" class="md-nav__link">
+    2.  获取系统sdk
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-u-boot" class="md-nav__link">
+    3.  编译U-Boot
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-linux" class="md-nav__link">
+    4.  编译Linux内核
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-ubuntu" class="md-nav__link">
+    5.  Ubuntu文件系统制作
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    6.  系统固件打包
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    7. 启动新固件
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="_1">实验步骤</h1>
+<h2 id="1">1. 导入虚拟机</h2>
+<p>&emsp;&emsp;本实验提供已安装好实验环境的Ubuntu20.04虚拟机。实验开始前，需要在VirtualBox中导入虚拟机镜像。</p>
+<p>&emsp;&emsp;首先，下载并安装VirtualBox及VirtualBox的扩展包，安装完成后打开VirtualBox。</p>
+<p>&emsp;&emsp;然后，按照如下图所示，依次点击相应的按钮以导入虚拟机。</p>
+<p><center><img src="../assets/0-1.png" width = 600></center></p>
+<p>&emsp;&emsp;点击“打开”按钮后，检查下图所示的设置是否与物理机兼容。如果出现不兼容，需根据物理机的配置进行相应的修改。</p>
+<p><center><img src="../assets/0-2.png" width = 350></center></p>
+<p>&emsp;&emsp;检查无误后，点击窗口右下方的“导入”按钮，耐心等待虚拟机导入完成。</p>
+<h2 id="2-sdk">2.  获取系统sdk</h2>
+<p>&emsp;&emsp;首先，在Ubuntu系统中/home/embsys目录下，新建文件夹mysdk，然后在实验包里的gw3399-linux目录下，复制gw3399-linux.tar.gz（包含uboot、kernel）和patch.tar.gz到/home/embsys/mysdk目录下。</p>
+<p>&emsp;&emsp;接下来，通过tar指令解压sdk包：</p>
+<div class="highlight"><pre><span></span><code>$ <span class="nb">cd</span> ~/mysdk
+$ sudo tar -xvf gw3399-linux.tar.gz
+</code></pre></div>
+<p>&emsp;&emsp;等待解压完成后，通过ls命令，可看到mysdk目录下多了一个gw3399-linux目录。</p>
+<p>&emsp;&emsp;接着，给sdk打上patch.tar.gz的补丁包：</p>
+<div class="highlight"><pre><span></span><code>$ cp patch.tar.gz gw3399-linux  <span class="c1"># 复制补丁包到Linux SDK根目录下</span>
+$ <span class="nb">cd</span> gw3399-linux               <span class="c1"># 切换到Linux SDK根目录</span>
+$ sudo tar -xvf patch.tar.gz    <span class="c1"># 解压补丁包，覆盖之前的源码</span>
+$ sudo rm patch.tar.gz          <span class="c1"># 删除补丁包</span>
+</code></pre></div>
+<h2 id="3-u-boot">3.  编译U-Boot</h2>
+<p>&emsp;&emsp;首先，设置交叉编译器环境变量：</p>
+<div class="highlight"><pre><span></span><code>$ <span class="nb">cd</span> ~/mysdk/gw3399-linux/
+$ <span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:~/mysdk/gw3399-linux/prebuilts/gcc/linux-x86/aarch64/gcc-linaro-6.3.1-2017.05-x86_64_aarch64-linux-gnu/bin
+</code></pre></div>
+<p>&emsp;&emsp;注意，上述设置仅对当前打开的终端有效。如果不想每次打开终端都输一遍上述命令，可将交叉编译器的路径添加到系统的环境变量中。</p>
+<p>&emsp;&emsp;然后，输入以下命令以配置编译U-Boot：</p>
+<div class="highlight"><pre><span></span><code>$ <span class="nb">cd</span> ./u-boot
+$ make gw3399_defconfig <span class="c1"># 写入默认配置</span>
+$ make <span class="nv">CROSS_COMPILE</span><span class="o">=</span>aarch64-linux-gnu- <span class="c1"># 开始编译  </span>
+</code></pre></div>
+<p><img alt="1-4" src="../assets/1-4.png" /></p>
+<p>&emsp;&emsp;等待一段时间后，编译完成，生成u-boot.img：</p>
+<p><img alt="1-5" src="../assets/1-5.png" /></p>
+<p>&emsp;&emsp;但这个u-boot.img并不能直接使用，还需要通过以下指令，打包生成rk兼容的u-boot文件：</p>
+<div class="highlight"><pre><span></span><code>$ ../rkbin/tools/loaderimage --pack --uboot u-boot.bin uboot.img 0x00200000 
+</code></pre></div>
+<p><img alt="1-6" src="../assets/1-6.png" /></p>
+<p>&emsp;&emsp;这样生成的uboot.img（注意：u和boot中间没有横杠-），才是可以更新到GW3399中的U-Boot固件。</p>
+<p>&emsp;&emsp;接下来，通过以下指令，打包生成*_loader_*.bin和trust.img：</p>
+<div class="highlight"><pre><span></span><code>$ <span class="nb">cd</span> ../rkbin
+$ ./tools/boot_merger --replace tools/rk_tools/ ./ ./RKBOOT/RK3399MINIALL.ini  
+$ sudo mv *_loader_*.bin ../u-boot/ <span class="c1">#将生成的bin文件移动到u-boot目录</span>
+$ tools/trust_merger --replace tools/rk_tools/ ./ RKTRUST/RK3399TRUST.ini   <span class="c1">#生成trust.img</span>
+$ sudo mv trust.img ../u-boot/  <span class="c1">#将生成的trust.img移动到u-boot目录</span>
+</code></pre></div>
+<p><img alt="1-7" src="../assets/1-7.png" /></p>
+<p>&emsp;&emsp;最后，将这三个有效镜像文件复制到输出目录（output目录），然后清理过程文件：</p>
+<div class="highlight"><pre><span></span><code>$ <span class="nb">cd</span> ../u-boot/
+$ sudo cp -v ./*_loader_*.bin ../output/MiniLoaderAll.bin
+$ sudo cp -v ./uboot.img ../output/
+$ sudo cp -v ./trust.img ../output/
+$ make clean  
+</code></pre></div>
+<p>&emsp;&emsp;综上所述，通过编译U-Boot，将三个可以烧写到GW3399的分区映像（uboot.img，trust.img，MiniLoaderAll.bin）输出到了output目录：</p>
+<div class="highlight"><pre><span></span><code>$ <span class="nb">cd</span> ../output/
+$ ls
+</code></pre></div>
+<p><center><img alt="1-10" src="../assets/1-10.png" /></center></p>
+<h2 id="4-linux">4.  编译Linux内核</h2>
+<p>&emsp;&emsp;编译Linux内核的方法和编译U-Boot类似，并且过程更为简捷。</p>
+<p>&emsp;&emsp;首先，设置交叉编译器环境变量：</p>
+<div class="highlight"><pre><span></span><code>$ <span class="nb">cd</span> ~/mysdk/gw3399-linux/
+$ <span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:~/mysdk/gw3399-linux/prebuilts/gcc/linux-x86/aarch64/gcc-linaro-6.3.1-2017.05-x86_64_aarch64-linux-gnu/bin
+</code></pre></div>
+<p>&emsp;&emsp;然后，配置编译Linux内核：</p>
+<div class="highlight"><pre><span></span><code>$ <span class="nb">cd</span> ./kernel/
+$ make <span class="nv">ARCH</span><span class="o">=</span>arm64 gw3399_linux_defconfig  <span class="c1">#写入默认配置</span>
+$ make <span class="nv">ARCH</span><span class="o">=</span>arm64 <span class="nv">CROSS_COMPILE</span><span class="o">=</span>aarch64-linux-gnu- <span class="c1">#开始编译</span>
+<span class="c1">#编译内核设备树并生成boot.img</span>
+$ make <span class="nv">ARCH</span><span class="o">=</span>arm64 gw3399-linux.img <span class="nv">CROSS_COMPILE</span><span class="o">=</span>aarch64-linux-gnu-
+</code></pre></div>
+<p>&emsp;&emsp;等待一段时间后，编译完成，生成boot.img：</p>
+<p><img alt="1-13" src="../assets/1-13.png" /></p>
+<p>&emsp;&emsp;最后，将这个boot.img复制到输出目录（output目录），然后清理过程文件：</p>
+<div class="highlight"><pre><span></span><code>$ sudo cp -v ./boot.img ../output/
+$ make clean
+</code></pre></div>
+<p>&emsp;&emsp;综上所述，通过编译Linux内核，将一个可以烧写到GW3399的分区映像（boot.img）输出到了output目录：</p>
+<p><center><img alt="1-15" src="../assets/1-15.png" /></center></p>
+<h2 id="5-ubuntu">5.  Ubuntu文件系统制作</h2>
+<p>&emsp;&emsp;本节讲解从官网下载纯净版Ubuntu核心，在ARM64 AARCH64上构建最小的Ubuntu文件系统的方法。本节只是讲述文件系统的制作方法，制作出的文件系统是不带桌面的，只能通过串口访问。带桌面的文件系统（出厂镜像）制作方法与本节完全相同，只是需要安装桌面、各种软件包，生成的文件系统较大。</p>
+<p>&emsp;&emsp;首先，在~/mysdk目录下，新建rootfs目录。从实验包的rootfs文件夹中，将ch-mount.sh和ubuntu-base-16.04.2-base-arm64.tar.gz（官方Ubuntu核心）复制到rootfs目录下。复制方法可参照MobaXterm 远程登录工具MobaXterm 中的文件传输SFTP服务。</p>
+<p>&emsp;&emsp;在rootfs目录中创建新目录ubuntu-rootfs，将压缩包通过tar指令解压到这个目录下。等待一段时间，解压完成后，可以通过ls命令，看到ubuntu-rootfs目录下的文件结构已经完成：</p>
+<div class="highlight"><pre><span></span><code>$ <span class="nb">cd</span> ~/mysdk
+$ mkdir rootfs
+$ <span class="nb">cd</span> ./rootfs/
+$ sudo mkdir ubuntu-rootfs
+$ sudo tar -xvf ubuntu-base-16.04.2-base-arm64.tar.gz -C ubuntu-rootfs
+$ <span class="nb">cd</span> ./ubuntu-rootfs/
+$ ls
+</code></pre></div>
+<p><img alt="1-16" src="../assets/1-16.png" /></p>
+<p>&emsp;&emsp;接着，使用qemu在X86环境下构建出arm虚拟机，可以模拟arm环境进行开发，在arm linux的文件系统中安装相应的库文件，编译arm版本等。</p>
+<p>&emsp;&emsp;通过以下指令，安装qemu-user-static，搭建arm64模拟环境：</p>
+<div class="highlight"><pre><span></span><code>$ sudo apt-get install qemu-user-static
+$ sudo cp /usr/bin/qemu-aarch64-static ./usr/bin
+$ sudo cp -b /etc/resolv.conf etc/
+</code></pre></div>
+<p>&emsp;&emsp;通过ch-mount.sh脚本，chroot到arm64的文件系统下：</p>
+<div class="highlight"><pre><span></span><code>$ <span class="nb">cd</span> ../
+$ chmod +x ch-mount.sh
+$ sudo ./ch-mount.sh -m ubuntu-rootfs/
+</code></pre></div>
+<p>&emsp;&emsp;如图，命令行提示符前缀变成了root@ubuntu，说明chroot成功：</p>
+<p><center><img alt="1-18" src="../assets/1-18.png" /></center></p>
+<p>&emsp;&emsp;安装基础软件包（这一步需要网络，如果没有网络可以跳过）</p>
+<p>&emsp;&emsp;在更新软件过程中，如果国外源太慢了，可以修改为中科大源，修改如下：</p>
+<div class="highlight"><pre><span></span><code>$ <span class="nb">cd</span> /etc/apt
+$ <span class="nb">echo</span> <span class="s2">&quot;deb http://mirrors.ustc.edu.cn/ubuntu-ports/ xenial main multiverse restricted universe</span>
+<span class="s2">deb http://mirrors.ustc.edu.cn/ubuntu-ports/ xenial-backports main multiverse restricted universe</span>
+<span class="s2">deb http://mirrors.ustc.edu.cn/ubuntu-ports/ xenial-proposed main multiverse restricted universe</span>
+<span class="s2">deb http://mirrors.ustc.edu.cn/ubuntu-ports/ xenial-security main multiverse restricted universe</span>
+<span class="s2">deb http://mirrors.ustc.edu.cn/ubuntu-ports/ xenial-updates main multiverse restricted universe</span>
+<span class="s2">deb-src http://mirrors.ustc.edu.cn/ubuntu-ports/ xenial main multiverse restricted universe</span>
+<span class="s2">deb-src http://mirrors.ustc.edu.cn/ubuntu-ports/ xenial-backports main multiverse restricted universe</span>
+<span class="s2">deb-src http://mirrors.ustc.edu.cn/ubuntu-ports/ xenial-proposed main multiverse restricted universe</span>
+<span class="s2">deb-src http://mirrors.ustc.edu.cn/ubuntu-ports/ xenial-security main multiverse restricted universe</span>
+<span class="s2">deb-src http://mirrors.ustc.edu.cn/ubuntu-ports/ xenial-updates main multiverse restricted universe</span>
+<span class="s2">&quot;</span> &gt; sources.list
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>$ apt-get update   <span class="c1">#更新软件列表</span>
+$ apt-get install language-pack-en-base sudo net-tools ethtool wireless-tools network-manager iputils-ping rsyslog bash-completion
+</code></pre></div>
+<p>&emsp;&emsp;这一步中安装了基础语言包、sudo命令包、网络工具包、tab键命令补全工具等最常用的基础软件包。带桌面的文件系统（出厂镜像）制作要在这一步安装桌面和大量附加软件包，其余步骤完全相同。</p>
+<p>&emsp;&emsp;接下来，设置用户名与密码、root密码和主机名：</p>
+<div class="highlight"><pre><span></span><code>$ useradd -s <span class="s1">&#39;/bin/bash&#39;</span> -m -G adm,sudo zonesion  <span class="c1">#添加用户zonesion</span>
+$ passwd zonesion  <span class="c1">#设置zonesion用户密码</span>
+<span class="m">123456</span>  <span class="c1">#输入密码</span>
+<span class="m">123456</span>   <span class="c1">#确认密码</span>
+$ passwd root      <span class="c1">#设置root密码</span>
+<span class="m">123456</span>  <span class="c1">#输入密码</span>
+<span class="m">123456</span>   <span class="c1">#确认密码</span>
+$ <span class="nb">echo</span> <span class="s1">&#39;GW3399&#39;</span> &gt; /etc/hostname  <span class="c1">#设置主机名</span>
+</code></pre></div>
+<p>&emsp;&emsp;设置完成后，退出arm64模拟文件系统：</p>
+<div class="highlight"><pre><span></span><code>$ <span class="nb">exit</span>         <span class="c1">#注销当前用户</span>
+$ sudo ./ch-mount.sh -u ubuntu-rootfs/    <span class="c1">#卸除当前挂载的文件系统</span>
+</code></pre></div>
+<p><center><img alt="1-20" src="../assets/1-20.png" /></center></p>
+<p>&emsp;&emsp;然后，创建作为rootfs固件容器的img文件（注意：格式化时需要输入y回车）：</p>
+<div class="highlight"><pre><span></span><code>$ sudo dd <span class="k">if</span><span class="o">=</span>/dev/zero <span class="nv">of</span><span class="o">=</span>ubuntu-rootfs.img <span class="nv">bs</span><span class="o">=</span>1M <span class="nv">count</span><span class="o">=</span><span class="m">1024</span>        <span class="c1">#制作空的固件容器</span>
+$ sudo mkfs.ext4  ubuntu-rootfs.img       <span class="c1">#将img文件格式化为ext4格式</span>
+</code></pre></div>
+<p><img alt="1-21" src="../assets/1-21.png" /></p>
+<p>&emsp;&emsp;接着，将arm64文件系统内容制作到ubuntu-rootfs.img：</p>
+<div class="highlight"><pre><span></span><code>$ sudo mkdir ubuntu-mount                           <span class="c1">#新建挂载目录</span>
+$ sudo mount ubuntu-rootfs.img ubuntu-mount/        <span class="c1">#将img文件挂载到挂载目录</span>
+$ sudo cp -rfp ubuntu-rootfs/* ubuntu-mount/        <span class="c1">#将设置好的文件系统复制到挂载目录</span>
+$ sudo umount ubuntu-mount/                         <span class="c1">#将img文件从挂载目录卸除</span>
+$ sudo e2fsck -p -f ubuntu-rootfs.img               <span class="c1">#检查文件系统是否正常</span>
+$ sudo resize2fs -M ubuntu-rootfs.img               <span class="c1">#将rootfs压缩到符合其占用空间的大小</span>
+</code></pre></div>
+<p>&emsp;&emsp;最后，将制作完成的ubuntu-rootfs.img复制到输出目录（output目录），然后清理过程文件：</p>
+<div class="highlight"><pre><span></span><code>$ sudo cp -v ./ubuntu-rootfs.img ../gw3399-linux/output/rootfs.img
+$ <span class="nb">cd</span> ../
+$ sudo rm -rf rootfs/
+</code></pre></div>
+<p>&emsp;&emsp;综上所述，通过上述操作，将可以烧写到GW3399的Ubuntu文件系统（rootfs.img）输出到了output目录：</p>
+<div class="highlight"><pre><span></span><code>$ <span class="nb">cd</span> ./gw3399-linux/output/
+$ ls
+</code></pre></div>
+<p><center><img alt="1-23" src="../assets/1-23.png" /></center></p>
+<h2 id="6">6.  系统固件打包</h2>
+<p>&emsp;&emsp;由于出厂镜像的文件系统过于庞大，本节仍通过上一节生成的最小Ubuntu文件系统，来演示系统固件打包方法。</p>
+<p>&emsp;&emsp;首先，在Windows主机的D盘（或其他有足够空间的磁盘）根目录下，新建FirmWare文件夹，然后在FirmWare文件夹下新建Image文件夹。</p>
+<p>&emsp;&emsp;接着，将之前生成的5个固件，从Linux虚拟机的output目录中复制到Image文件夹。复制方法可使用远程登录工具MobaXterm 中的文件传输SFTP服务，或通过共享文件夹拷贝。</p>
+<p>&emsp;&emsp;打开Image文件夹，新建parameter.txt，将以下内容复制到parameter.txt中并保存：</p>
+<div class="highlight"><pre><span></span><code>FIRMWARE_VER: <span class="m">8</span>.1
+MACHINE_MODEL: RK3399
+MACHINE_ID: <span class="m">007</span>
+MANUFACTURER: RK3399
+MAGIC: 0x5041524B
+ATAG: 0x00200800
+MACHINE: <span class="m">3399</span>
+CHECK_MASK: 0x80
+PWR_HLD: <span class="m">0</span>,0,A,0,1
+TYPE: GPT
+CMDLINE: <span class="nv">mtdparts</span><span class="o">=</span>rk29xxnand:0x00002000@0x00004000<span class="o">(</span>uboot<span class="o">)</span>,0x00002000@0x00006000<span class="o">(</span>trust<span class="o">)</span>,0x00002000@0x00008000<span class="o">(</span>misc<span class="o">)</span>,0x00010000@0x0000a000<span class="o">(</span>boot<span class="o">)</span>,0x00010000@0x0001a000<span class="o">(</span>recovery<span class="o">)</span>,0x00010000@0x0002a000<span class="o">(</span>backup<span class="o">)</span>,0x00020000@0x0003a000<span class="o">(</span>oem<span class="o">)</span>,0x00700000@0x0005a000<span class="o">(</span>rootfs<span class="o">)</span>,-@0x0075a000<span class="o">(</span>userdata:grow<span class="o">)</span>
+uuid:rootfs<span class="o">=</span>614e0000-0000-4b53-8000-1d28000054a9
+</code></pre></div>
+<div class="admonition 注意">
+<p class="admonition-title">注意</p>
+<p>从CMDLINE开始一直到uuid之前都是同一条命令，不要分行！</p>
+</div>
+<p>&emsp;&emsp;在实验包的固件打包工具，将RKImageMaker.exe、AFPTool.exe和package-file（package-file可根据实际情况修改）复制到FirmWare文件夹，然后按下Win+R打开运行窗口，输入cmd打开命令行窗口：</p>
+<p><center><img alt="1-24" src="../assets/1-24.png" /></center></p>
+<p>&emsp;&emsp;在命令行窗口中，通过以下指令切换到FirmWare文件夹：</p>
+<div class="highlight"><pre><span></span><code>&gt; D:
+&gt; <span class="nb">cd</span> FirmWare
+</code></pre></div>
+<p><center><img alt="1-25" src="../assets/1-25.png" /></center></p>
+<p>&emsp;&emsp;通过以下指令，先通过AFPTools将几个固件打包成一个单独的update.img，然后通过RKImageMaker.exe将update.img制作成可用于RK3399的固件（注：第2行和第3行是一条指令）：</p>
+<div class="highlight"><pre><span></span><code>&gt; Afptool -pack ./ Image<span class="se">\u</span>pdate.img
+&gt; RKImageMaker.exe -RK330C Image<span class="se">\M</span>iniLoaderAll.bin  Image<span class="se">\u</span>pdate.img update.img -os_type:androidos
+</code></pre></div>
+<p><img alt="1-26" src="../assets/1-26.png" /></p>
+<p>&emsp;&emsp;最后，在FirmWare文件夹中的update.img即为打包完成的系统固件</p>
+<div class="admonition 说明">
+<p class="admonition-title">说明</p>
+<p>本节生成的统一固件是不带桌面的，可以在实验包的ubuntu文件夹中，将ubuntu-rootfs-20190609.img和parameter.txt烧写到GW3399，从而获得带桌面的Ubuntu系统。</p>
+</div>
+<p>&emsp;&emsp;参照Windows环境下更新固件来烧录update.img。</p>
+<p><img alt="1-28" src="../assets/1-28.png" /></p>
+<h2 id="7">7. 启动新固件</h2>
+<p>&emsp;&emsp;启动新固件之前，先通过Mini-USB线，将GW3399的UART串口连接到PC：</p>
+<p><img alt="1-29" src="../assets/1-29.png" /></p>
+<p>&emsp;&emsp;然后，打开MobaXterm，点击Session -&gt; Serial，选择GW3399对应的端口号，如果不知道GW3399对应的是哪个端口，打开设备管理器即可查看（GW3399必须上电）：</p>
+<p><center><img alt="1-30" src="../assets/1-30.png" /></center></p>
+<p>&emsp;&emsp;选择端口后，将端口连接属性设置为下图所示（波特率：115200，数据流控制：无）。</p>
+<p><img alt="1-31" src="../assets/1-31.png" /></p>
+<p>&emsp;&emsp;串口连接成功后，按GW3399的RESET键复位，等待GW3399重启：</p>
+<p>&emsp;&emsp;最后，输入用户名与密码（用户名：zonesion，密码：123456），登录到GW3399：</p>
+<p><center><img alt="1-32" src="../assets/1-32.png" /></center></p>
+<p>&emsp;&emsp;至此，新固件启动成功。</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../theory/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  上一页
+                </span>
+                实验原理
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../submit/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  下一页
+                </span>
+                验收与提交
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2019 - 2021 哈尔滨工业大学（深圳）
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/vendor.7e0ee788.min.js"></script>
+      <script src="../../assets/javascripts/bundle.b3a72adc.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../..",
+          features: ['navigation.tabs'],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.4ac00218.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>

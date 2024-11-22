@@ -1,0 +1,1147 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.1.5">
+    
+    
+      
+        <title>U-Boot命令实现及驱动模型 - 嵌入式计算实验（2021春季） | 哈工大（深圳）</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.21aed14c.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.196e0c26.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#7e56c2">
+        
+      
+    
+    
+    
+      
+        
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="deep-purple" data-md-color-accent="deep-purple">
+      
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#u-boot" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="../.." title="嵌入式计算实验（2021春季） | 哈工大（深圳）" class="md-header-nav__button md-logo" aria-label="嵌入式计算实验（2021春季） | 哈工大（深圳）">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M220.8 123.3c1 .5 1.8 1.7 3 1.7 1.1 0 2.8-.4 2.9-1.5.2-1.4-1.9-2.3-3.2-2.9-1.7-.7-3.9-1-5.5-.1-.4.2-.8.7-.6 1.1.3 1.3 2.3 1.1 3.4 1.7zm-21.9 1.7c1.2 0 2-1.2 3-1.7 1.1-.6 3.1-.4 3.5-1.6.2-.4-.2-.9-.6-1.1-1.6-.9-3.8-.6-5.5.1-1.3.6-3.4 1.5-3.2 2.9.1 1 1.8 1.5 2.8 1.4zM420 403.8c-3.6-4-5.3-11.6-7.2-19.7-1.8-8.1-3.9-16.8-10.5-22.4-1.3-1.1-2.6-2.1-4-2.9-1.3-.8-2.7-1.5-4.1-2 9.2-27.3 5.6-54.5-3.7-79.1-11.4-30.1-31.3-56.4-46.5-74.4-17.1-21.5-33.7-41.9-33.4-72C311.1 85.4 315.7.1 234.8 0 132.4-.2 158 103.4 156.9 135.2c-1.7 23.4-6.4 41.8-22.5 64.7-18.9 22.5-45.5 58.8-58.1 96.7-6 17.9-8.8 36.1-6.2 53.3-6.5 5.8-11.4 14.7-16.6 20.2-4.2 4.3-10.3 5.9-17 8.3s-14 6-18.5 14.5c-2.1 3.9-2.8 8.1-2.8 12.4 0 3.9.6 7.9 1.2 11.8 1.2 8.1 2.5 15.7.8 20.8-5.2 14.4-5.9 24.4-2.2 31.7 3.8 7.3 11.4 10.5 20.1 12.3 17.3 3.6 40.8 2.7 59.3 12.5 19.8 10.4 39.9 14.1 55.9 10.4 11.6-2.6 21.1-9.6 25.9-20.2 12.5-.1 26.3-5.4 48.3-6.6 14.9-1.2 33.6 5.3 55.1 4.1.6 2.3 1.4 4.6 2.5 6.7v.1c8.3 16.7 23.8 24.3 40.3 23 16.6-1.3 34.1-11 48.3-27.9 13.6-16.4 36-23.2 50.9-32.2 7.4-4.5 13.4-10.1 13.9-18.3.4-8.2-4.4-17.3-15.5-29.7zM223.7 87.3c9.8-22.2 34.2-21.8 44-.4 6.5 14.2 3.6 30.9-4.3 40.4-1.6-.8-5.9-2.6-12.6-4.9 1.1-1.2 3.1-2.7 3.9-4.6 4.8-11.8-.2-27-9.1-27.3-7.3-.5-13.9 10.8-11.8 23-4.1-2-9.4-3.5-13-4.4-1-6.9-.3-14.6 2.9-21.8zM183 75.8c10.1 0 20.8 14.2 19.1 33.5-3.5 1-7.1 2.5-10.2 4.6 1.2-8.9-3.3-20.1-9.6-19.6-8.4.7-9.8 21.2-1.8 28.1 1 .8 1.9-.2-5.9 5.5-15.6-14.6-10.5-52.1 8.4-52.1zm-13.6 60.7c6.2-4.6 13.6-10 14.1-10.5 4.7-4.4 13.5-14.2 27.9-14.2 7.1 0 15.6 2.3 25.9 8.9 6.3 4.1 11.3 4.4 22.6 9.3 8.4 3.5 13.7 9.7 10.5 18.2-2.6 7.1-11 14.4-22.7 18.1-11.1 3.6-19.8 16-38.2 14.9-3.9-.2-7-1-9.6-2.1-8-3.5-12.2-10.4-20-15-8.6-4.8-13.2-10.4-14.7-15.3-1.4-4.9 0-9 4.2-12.3zm3.3 334c-2.7 35.1-43.9 34.4-75.3 18-29.9-15.8-68.6-6.5-76.5-21.9-2.4-4.7-2.4-12.7 2.6-26.4v-.2c2.4-7.6.6-16-.6-23.9-1.2-7.8-1.8-15 .9-20 3.5-6.7 8.5-9.1 14.8-11.3 10.3-3.7 11.8-3.4 19.6-9.9 5.5-5.7 9.5-12.9 14.3-18 5.1-5.5 10-8.1 17.7-6.9 8.1 1.2 15.1 6.8 21.9 16l19.6 35.6c9.5 19.9 43.1 48.4 41 68.9zm-1.4-25.9c-4.1-6.6-9.6-13.6-14.4-19.6 7.1 0 14.2-2.2 16.7-8.9 2.3-6.2 0-14.9-7.4-24.9-13.5-18.2-38.3-32.5-38.3-32.5-13.5-8.4-21.1-18.7-24.6-29.9s-3-23.3-.3-35.2c5.2-22.9 18.6-45.2 27.2-59.2 2.3-1.7.8 3.2-8.7 20.8-8.5 16.1-24.4 53.3-2.6 82.4.6-20.7 5.5-41.8 13.8-61.5 12-27.4 37.3-74.9 39.3-112.7 1.1.8 4.6 3.2 6.2 4.1 4.6 2.7 8.1 6.7 12.6 10.3 12.4 10 28.5 9.2 42.4 1.2 6.2-3.5 11.2-7.5 15.9-9 9.9-3.1 17.8-8.6 22.3-15 7.7 30.4 25.7 74.3 37.2 95.7 6.1 11.4 18.3 35.5 23.6 64.6 3.3-.1 7 .4 10.9 1.4 13.8-35.7-11.7-74.2-23.3-84.9-4.7-4.6-4.9-6.6-2.6-6.5 12.6 11.2 29.2 33.7 35.2 59 2.8 11.6 3.3 23.7.4 35.7 16.4 6.8 35.9 17.9 30.7 34.8-2.2-.1-3.2 0-4.2 0 3.2-10.1-3.9-17.6-22.8-26.1-19.6-8.6-36-8.6-38.3 12.5-12.1 4.2-18.3 14.7-21.4 27.3-2.8 11.2-3.6 24.7-4.4 39.9-.5 7.7-3.6 18-6.8 29-32.1 22.9-76.7 32.9-114.3 7.2zm257.4-11.5c-.9 16.8-41.2 19.9-63.2 46.5-13.2 15.7-29.4 24.4-43.6 25.5s-26.5-4.8-33.7-19.3c-4.7-11.1-2.4-23.1 1.1-36.3 3.7-14.2 9.2-28.8 9.9-40.6.8-15.2 1.7-28.5 4.2-38.7 2.6-10.3 6.6-17.2 13.7-21.1.3-.2.7-.3 1-.5.8 13.2 7.3 26.6 18.8 29.5 12.6 3.3 30.7-7.5 38.4-16.3 9-.3 15.7-.9 22.6 5.1 9.9 8.5 7.1 30.3 17.1 41.6 10.6 11.6 14 19.5 13.7 24.6zM173.3 148.7c2 1.9 4.7 4.5 8 7.1 6.6 5.2 15.8 10.6 27.3 10.6 11.6 0 22.5-5.9 31.8-10.8 4.9-2.6 10.9-7 14.8-10.4s5.9-6.3 3.1-6.6-2.6 2.6-6 5.1c-4.4 3.2-9.7 7.4-13.9 9.8-7.4 4.2-19.5 10.2-29.9 10.2s-18.7-4.8-24.9-9.7c-3.1-2.5-5.7-5-7.7-6.9-1.5-1.4-1.9-4.6-4.3-4.9-1.4-.1-1.8 3.7 1.7 6.5z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            嵌入式计算实验（2021春季） | 哈工大（深圳）
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              U-Boot命令实现及驱动模型
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://gitee.com/hitsz-cslab/embSys" title="前往 GitHub 仓库" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    EmbSys
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+
+  
+
+<nav class="md-tabs md-tabs--active" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+    
+    <a href="../.." class="md-tabs__link">
+      实验须知
+    </a>
+  </li>
+
+      
+        
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+      
+      <a href="../../GW3399/part1/" class="md-tabs__link">
+        实验平台简介
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+      
+      <a href="../../BootLoader/overview/" class="md-tabs__link">
+        BootLoader启动流程分析
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+      
+      <a href="../../lab1/overview/" class="md-tabs__link">
+        Lab1：Linux内核编译及烧录
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+      
+        
+      
+      <a href="../overview/" class="md-tabs__link md-tabs__link--active">
+        Lab2：U-Boot编程
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+      
+      <a href="../../lab3/overview/" class="md-tabs__link">
+        Lab3：基于HiLens的口罩识别系统设计
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="嵌入式计算实验（2021春季） | 哈工大（深圳）" class="md-nav__button md-logo" aria-label="嵌入式计算实验（2021春季） | 哈工大（深圳）">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M220.8 123.3c1 .5 1.8 1.7 3 1.7 1.1 0 2.8-.4 2.9-1.5.2-1.4-1.9-2.3-3.2-2.9-1.7-.7-3.9-1-5.5-.1-.4.2-.8.7-.6 1.1.3 1.3 2.3 1.1 3.4 1.7zm-21.9 1.7c1.2 0 2-1.2 3-1.7 1.1-.6 3.1-.4 3.5-1.6.2-.4-.2-.9-.6-1.1-1.6-.9-3.8-.6-5.5.1-1.3.6-3.4 1.5-3.2 2.9.1 1 1.8 1.5 2.8 1.4zM420 403.8c-3.6-4-5.3-11.6-7.2-19.7-1.8-8.1-3.9-16.8-10.5-22.4-1.3-1.1-2.6-2.1-4-2.9-1.3-.8-2.7-1.5-4.1-2 9.2-27.3 5.6-54.5-3.7-79.1-11.4-30.1-31.3-56.4-46.5-74.4-17.1-21.5-33.7-41.9-33.4-72C311.1 85.4 315.7.1 234.8 0 132.4-.2 158 103.4 156.9 135.2c-1.7 23.4-6.4 41.8-22.5 64.7-18.9 22.5-45.5 58.8-58.1 96.7-6 17.9-8.8 36.1-6.2 53.3-6.5 5.8-11.4 14.7-16.6 20.2-4.2 4.3-10.3 5.9-17 8.3s-14 6-18.5 14.5c-2.1 3.9-2.8 8.1-2.8 12.4 0 3.9.6 7.9 1.2 11.8 1.2 8.1 2.5 15.7.8 20.8-5.2 14.4-5.9 24.4-2.2 31.7 3.8 7.3 11.4 10.5 20.1 12.3 17.3 3.6 40.8 2.7 59.3 12.5 19.8 10.4 39.9 14.1 55.9 10.4 11.6-2.6 21.1-9.6 25.9-20.2 12.5-.1 26.3-5.4 48.3-6.6 14.9-1.2 33.6 5.3 55.1 4.1.6 2.3 1.4 4.6 2.5 6.7v.1c8.3 16.7 23.8 24.3 40.3 23 16.6-1.3 34.1-11 48.3-27.9 13.6-16.4 36-23.2 50.9-32.2 7.4-4.5 13.4-10.1 13.9-18.3.4-8.2-4.4-17.3-15.5-29.7zM223.7 87.3c9.8-22.2 34.2-21.8 44-.4 6.5 14.2 3.6 30.9-4.3 40.4-1.6-.8-5.9-2.6-12.6-4.9 1.1-1.2 3.1-2.7 3.9-4.6 4.8-11.8-.2-27-9.1-27.3-7.3-.5-13.9 10.8-11.8 23-4.1-2-9.4-3.5-13-4.4-1-6.9-.3-14.6 2.9-21.8zM183 75.8c10.1 0 20.8 14.2 19.1 33.5-3.5 1-7.1 2.5-10.2 4.6 1.2-8.9-3.3-20.1-9.6-19.6-8.4.7-9.8 21.2-1.8 28.1 1 .8 1.9-.2-5.9 5.5-15.6-14.6-10.5-52.1 8.4-52.1zm-13.6 60.7c6.2-4.6 13.6-10 14.1-10.5 4.7-4.4 13.5-14.2 27.9-14.2 7.1 0 15.6 2.3 25.9 8.9 6.3 4.1 11.3 4.4 22.6 9.3 8.4 3.5 13.7 9.7 10.5 18.2-2.6 7.1-11 14.4-22.7 18.1-11.1 3.6-19.8 16-38.2 14.9-3.9-.2-7-1-9.6-2.1-8-3.5-12.2-10.4-20-15-8.6-4.8-13.2-10.4-14.7-15.3-1.4-4.9 0-9 4.2-12.3zm3.3 334c-2.7 35.1-43.9 34.4-75.3 18-29.9-15.8-68.6-6.5-76.5-21.9-2.4-4.7-2.4-12.7 2.6-26.4v-.2c2.4-7.6.6-16-.6-23.9-1.2-7.8-1.8-15 .9-20 3.5-6.7 8.5-9.1 14.8-11.3 10.3-3.7 11.8-3.4 19.6-9.9 5.5-5.7 9.5-12.9 14.3-18 5.1-5.5 10-8.1 17.7-6.9 8.1 1.2 15.1 6.8 21.9 16l19.6 35.6c9.5 19.9 43.1 48.4 41 68.9zm-1.4-25.9c-4.1-6.6-9.6-13.6-14.4-19.6 7.1 0 14.2-2.2 16.7-8.9 2.3-6.2 0-14.9-7.4-24.9-13.5-18.2-38.3-32.5-38.3-32.5-13.5-8.4-21.1-18.7-24.6-29.9s-3-23.3-.3-35.2c5.2-22.9 18.6-45.2 27.2-59.2 2.3-1.7.8 3.2-8.7 20.8-8.5 16.1-24.4 53.3-2.6 82.4.6-20.7 5.5-41.8 13.8-61.5 12-27.4 37.3-74.9 39.3-112.7 1.1.8 4.6 3.2 6.2 4.1 4.6 2.7 8.1 6.7 12.6 10.3 12.4 10 28.5 9.2 42.4 1.2 6.2-3.5 11.2-7.5 15.9-9 9.9-3.1 17.8-8.6 22.3-15 7.7 30.4 25.7 74.3 37.2 95.7 6.1 11.4 18.3 35.5 23.6 64.6 3.3-.1 7 .4 10.9 1.4 13.8-35.7-11.7-74.2-23.3-84.9-4.7-4.6-4.9-6.6-2.6-6.5 12.6 11.2 29.2 33.7 35.2 59 2.8 11.6 3.3 23.7.4 35.7 16.4 6.8 35.9 17.9 30.7 34.8-2.2-.1-3.2 0-4.2 0 3.2-10.1-3.9-17.6-22.8-26.1-19.6-8.6-36-8.6-38.3 12.5-12.1 4.2-18.3 14.7-21.4 27.3-2.8 11.2-3.6 24.7-4.4 39.9-.5 7.7-3.6 18-6.8 29-32.1 22.9-76.7 32.9-114.3 7.2zm257.4-11.5c-.9 16.8-41.2 19.9-63.2 46.5-13.2 15.7-29.4 24.4-43.6 25.5s-26.5-4.8-33.7-19.3c-4.7-11.1-2.4-23.1 1.1-36.3 3.7-14.2 9.2-28.8 9.9-40.6.8-15.2 1.7-28.5 4.2-38.7 2.6-10.3 6.6-17.2 13.7-21.1.3-.2.7-.3 1-.5.8 13.2 7.3 26.6 18.8 29.5 12.6 3.3 30.7-7.5 38.4-16.3 9-.3 15.7-.9 22.6 5.1 9.9 8.5 7.1 30.3 17.1 41.6 10.6 11.6 14 19.5 13.7 24.6zM173.3 148.7c2 1.9 4.7 4.5 8 7.1 6.6 5.2 15.8 10.6 27.3 10.6 11.6 0 22.5-5.9 31.8-10.8 4.9-2.6 10.9-7 14.8-10.4s5.9-6.3 3.1-6.6-2.6 2.6-6 5.1c-4.4 3.2-9.7 7.4-13.9 9.8-7.4 4.2-19.5 10.2-29.9 10.2s-18.7-4.8-24.9-9.7c-3.1-2.5-5.7-5-7.7-6.9-1.5-1.4-1.9-4.6-4.3-4.9-1.4-.1-1.8 3.7 1.7 6.5z"/></svg>
+
+    </a>
+    嵌入式计算实验（2021春季） | 哈工大（深圳）
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://gitee.com/hitsz-cslab/embSys" title="前往 GitHub 仓库" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    EmbSys
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." class="md-nav__link">
+      实验须知
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../ojguide/" class="md-nav__link">
+      作业提交说明
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" >
+    <label class="md-nav__link" for="nav-3">
+      实验平台简介
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="实验平台简介" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon"></span>
+        实验平台简介
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../GW3399/part1/" class="md-nav__link">
+      GW3399简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../GW3399/part2/" class="md-nav__link">
+      远程登录方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../GW3399/part3/" class="md-nav__link">
+      常用的LINUX命令
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../GW3399/part4/" class="md-nav__link">
+      系统固件更新
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" >
+    <label class="md-nav__link" for="nav-4">
+      BootLoader启动流程分析
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="BootLoader启动流程分析" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon"></span>
+        BootLoader启动流程分析
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../BootLoader/overview/" class="md-nav__link">
+      BootLoader概述
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../BootLoader/theory/" class="md-nav__link">
+      RK3399 BootLoader的启动过程
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" >
+    <label class="md-nav__link" for="nav-5">
+      Lab1：Linux内核编译及烧录
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Lab1：Linux内核编译及烧录" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon"></span>
+        Lab1：Linux内核编译及烧录
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../lab1/overview/" class="md-nav__link">
+      实验概述
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../lab1/theory/" class="md-nav__link">
+      实验原理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../lab1/step/" class="md-nav__link">
+      实现步骤
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../lab1/submit/" class="md-nav__link">
+      验收与提交
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" checked>
+    <label class="md-nav__link" for="nav-6">
+      Lab2：U-Boot编程
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Lab2：U-Boot编程" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        <span class="md-nav__icon md-icon"></span>
+        Lab2：U-Boot编程
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../overview/" class="md-nav__link">
+      实验概述
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6-2" type="checkbox" id="nav-6-2" checked>
+    <label class="md-nav__link" for="nav-6-2">
+      实验原理
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="实验原理" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-2">
+        <span class="md-nav__icon md-icon"></span>
+        实验原理
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        U-Boot命令实现及驱动模型
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" class="md-nav__link md-nav__link--active">
+      U-Boot命令实现及驱动模型
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-u-boot" class="md-nav__link">
+    1. U-Boot命令实现方式
+  </a>
+  
+    <nav class="md-nav" aria-label="1. U-Boot命令实现方式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    1.1 命令行的处理
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-u_boot_cmd" class="md-nav__link">
+    1.2 U_BOOT_CMD宏定义
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-u-boot" class="md-nav__link">
+    2. U-Boot驱动模型
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-u-bootgpio" class="md-nav__link">
+    3. U-Boot中的GPIO驱动模型
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../gpio/" class="md-nav__link">
+      U-Boot操作GPIO
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../step/" class="md-nav__link">
+      实验步骤
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../submit/" class="md-nav__link">
+      验收与提交
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7" >
+    <label class="md-nav__link" for="nav-7">
+      Lab3：基于HiLens的口罩识别系统设计
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Lab3：基于HiLens的口罩识别系统设计" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        <span class="md-nav__icon md-icon"></span>
+        Lab3：基于HiLens的口罩识别系统设计
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../lab3/overview/" class="md-nav__link">
+      实验概述
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7-2" type="checkbox" id="nav-7-2" >
+    <label class="md-nav__link" for="nav-7-2">
+      实验原理
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="实验原理" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-2">
+        <span class="md-nav__icon md-icon"></span>
+        实验原理
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../lab3/i2c/" class="md-nav__link">
+      I2C协议及驱动概述
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../lab3/hilens/" class="md-nav__link">
+      基于HiLens的口罩识别
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../lab3/step/" class="md-nav__link">
+      实验步骤
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../lab3/submit/" class="md-nav__link">
+      验收与提交
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-u-boot" class="md-nav__link">
+    1. U-Boot命令实现方式
+  </a>
+  
+    <nav class="md-nav" aria-label="1. U-Boot命令实现方式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    1.1 命令行的处理
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-u_boot_cmd" class="md-nav__link">
+    1.2 U_BOOT_CMD宏定义
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-u-boot" class="md-nav__link">
+    2. U-Boot驱动模型
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-u-bootgpio" class="md-nav__link">
+    3. U-Boot中的GPIO驱动模型
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="u-boot">U-Boot命令实现及驱动模型</h1>
+<h2 id="1-u-boot">1. U-Boot命令实现方式</h2>
+<h3 id="11">1.1 命令行的处理</h3>
+<p>&emsp;&emsp;系统上电后，RK3399芯片先从BootRom获取SPL代码，然后加载U-Boot到内存中运行（详见“Bootloader启动流程分析”）。在所有初始化程序执行完成之后，U-Boot调用run_main_loop函数以进入主循环，并在主循环中进入命令行模式，以获取串口数据，从而解析和执行用户输入的命令行命令。</p>
+<div class="highlight"><pre><span></span><code><span class="k">static</span> <span class="kt">int</span> <span class="n">run_main_loop</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="cp">#ifdef CONFIG_SANDBOX</span>
+    <span class="n">sandbox_main_loop_init</span><span class="p">();</span>
+<span class="cp">#endif</span>
+    <span class="cm">/* main_loop() can return to retry autoboot, if so just run it again */</span>
+    <span class="k">for</span> <span class="p">(;;)</span>
+        <span class="n">main_loop</span><span class="p">();</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>&emsp;&emsp;U-Boot把所有命令的数据结构都放在命令表中。命令表的每一行都代表一个命令，其数据类型是cmd_tbl_t。这些命令在链接时会被链接到指定的段中，因此也可以认为命令表是被定义在这个段中。</p>
+<h3 id="12-u_boot_cmd">1.2 U_BOOT_CMD宏定义</h3>
+<p>&emsp;&emsp;U-Boot命令在common目录下实现，且该目录下的单个C文件通常会实现一条或多条命令。如果要增加一条新命令，则首先需要在common目录下新建相应的C文件，然后在Makefile中指定编译该文件。</p>
+<p>&emsp;&emsp;定义新的U-Boot命令时，需要使用U_BOOT_CMD的宏定义。</p>
+<!-- 可参考common/console.c文件编写led-test.c。 -->
+
+<p>&emsp;&emsp;U_BOOT_CMD是定义在include/command.h中的宏：</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#define U_BOOT_CMD(_name, _maxargs, _rep, _cmd, _usage, _help)              \</span>
+<span class="cp">    U_BOOT_CMD_COMPLETE(_name, _maxargs, _rep, _cmd, _usage, _help, NULL)</span>
+</code></pre></div>
+<p>&emsp;&emsp;而U_BOOT_CMD_COMPLETE也是一个宏定义：</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#define U_BOOT_CMD_COMPLETE(_name, _maxargs, _rep, _cmd, _usage, _help, _comp) \</span>
+<span class="cp">    ll_entry_declare(cmd_tbl_t, _name, cmd) =                               \</span>
+<span class="cp">        U_BOOT_CMD_MKENT_COMPLETE(_name, _maxargs, _rep, _cmd,              \</span>
+<span class="cp">                                    _usage, _help, _comp);</span>
+</code></pre></div>
+<p>&emsp;&emsp;由上述代码可知，U_BOOT_CMD_COMPLETE被定义为一个赋值语句。</p>
+<p>&emsp;&emsp;赋值语句右侧是另一个宏定义U_BOOT_CMD_MKENT_COMPLETE：</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#define U_BOOT_CMD_MKENT_COMPLETE(_name, _maxargs, _rep, _cmd,              \</span>
+<span class="cp">                                    _usage, _help, _comp)                   \</span>
+<span class="cp">        { #_name, _maxargs, _rep, _cmd, _usage,                             \</span>
+<span class="cp">            _CMD_HELP(_help) _CMD_COMPLETE(_comp) }</span>
+</code></pre></div>
+<div class="admonition 说明">
+<p class="admonition-title">说明</p>
+<p>#_name是将_name传递的值字符串化，_CMD_HELP和_CMD_COMPLETE就是取本身。</p>
+<p>具体宏定义见include/command.h。</p>
+</div>
+<p>&emsp;&emsp;赋值语句左侧的ll_entry_declare也是一个宏定义（详见include/linker_lists.h）：</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#define ll_entry_declare(_type, _name, _list)                               \</span>
+<span class="cp">    _type _u_boot_list_2_##_list##_2_##_name __aligned(4)                   \</span>
+<span class="cp">        __attribute__((unused, section(&quot;.u_boot_list_2_&quot;#_list&quot;_2_&quot;#_name)))</span>
+</code></pre></div>
+<div class="admonition 说明">
+<p class="admonition-title">说明</p>
+<p>“##”和“#”都是预编译操作符，“##”有字符串连接的功能，而“#”则表示后面紧接着的是一个字符串。</p>
+<p>_type：传递变量类型</p>
+<p>_name，_list：传递组成变量名称的字符串，并将该变量放在section中</p>
+<p>_aligned(4)：指定定义的变量4字节对齐</p>
+<p>_attribute：选择未使用的section。</p>
+</div>
+<p>&emsp;&emsp;此外，U_BOOT_CMD_COMPLETE中定义了一个类型为cmd_tbl_t的结构体并对其赋值。</p>
+<p>&emsp;&emsp;在U-Boot中，每个命令都要用这样的一个结构体来描述，其定义如下：</p>
+<div class="highlight"><pre><span></span><code><span class="k">typedef</span> <span class="k">struct</span> <span class="nc">cmd_tbl_s</span> <span class="n">cmd_tbl_t</span><span class="p">;</span>
+<span class="k">struct</span> <span class="nc">cmd_tbl_s</span> <span class="p">{</span>
+    <span class="kt">char</span> <span class="o">*</span><span class="n">name</span><span class="p">;</span>         <span class="cm">/* Command Name */</span>
+    <span class="kt">int</span> <span class="n">maxargs</span><span class="p">;</span>        <span class="cm">/* maximum number of arguments */</span>
+    <span class="kt">int</span> <span class="n">repeatable</span><span class="p">;</span>     <span class="cm">/* autorepeat allowed? */</span>
+    <span class="cm">/* Implementation function */</span>
+    <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">cmd</span><span class="p">)(</span><span class="k">struct</span> <span class="nc">cmd_tbl_s</span><span class="o">*</span><span class="p">,</span> <span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">,</span> <span class="kt">char</span><span class="o">*</span> <span class="k">const</span><span class="p">[]);</span>
+    <span class="kt">char</span> <span class="o">*</span><span class="n">usage</span><span class="p">;</span>        <span class="cm">/* Usage message (short) */</span>
+
+<span class="cp">#ifdef CONFIG_SYS_LONGHELP</span>
+    <span class="kt">char</span> <span class="o">*</span><span class="n">help</span><span class="p">;</span>         <span class="cm">/* Help message (long) */</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifdef CONFIG_AUTO_COMPLETE</span>
+    <span class="cm">/* do auto completion on the arguments */</span>
+    <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">complete</span><span class="p">)(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span><span class="o">*</span> <span class="k">const</span> <span class="n">argv</span><span class="p">[],</span> <span class="kt">char</span> <span class="n">last_char</span><span class="p">,</span> <span class="kt">int</span> <span class="n">maxv</span><span class="p">,</span> <span class="kt">char</span><span class="o">*</span> <span class="n">cmdv</span><span class="p">[]);</span>
+<span class="cp">#endif</span>
+<span class="p">};</span>
+</code></pre></div>
+<div class="admonition 说明">
+<p class="admonition-title">说明</p>
+<p>成员cmd是一个函数指针，指向该命令对应的处理函数。</p>
+<p>所有命令的处理函数的接口都是一致的。</p>
+</div>
+<p>&emsp;&emsp;将上述宏定义全部展开，可得如下结构体：</p>
+<div class="highlight"><pre><span></span><code><span class="k">struct</span> <span class="nc">cmd_tbl_s</span> <span class="n">_u_boot_list_2_cmd_2_</span><span class="err">##</span><span class="n">_name</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="cp">#_name, _maxargs, _rep, _cmd, _usage, _help, NULL</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>&emsp;&emsp;综上所述，U_BOOT_CMD就是存放在U-Boot中的空闲section内的一个结构体变量。</p>
+<p>&emsp;&emsp;U-Boot编译完成后，可在arch/arm/cpu/armv8/u-boot-spl.lds和u-boot.map中看到映射的地址：</p>
+<div class="highlight"><pre><span></span><code>.u_boot_list : {
+    . = ALIGN(8);
+    KEEP(*(SORT(.u_boot_list*)));
+} &gt;.sram
+
+...
+
+.rela.u_boot_list_2_cmd_2_led-test
+                0x00000000002b61b8       0x60 arch/arm/cpu/armv8/start.o
+</code></pre></div>
+<p>&emsp;&emsp;从u-boot.map可以看到，led-test（需将编写的led-test.c放到common目录下，修改Makefile文件，编译后才能看到led-test段）已经放到u_boot_list_2段中。</p>
+<p>&emsp;&emsp;运行时，U-Boot从串口接收用户的命令，然后从u_boot_list_2段中依次查找每个cmd_tbl_t，根据成员name比较是否和用户命令匹配。如果匹配成功，则执行第三个成员cmd指向的函数，否则查找下一个cmd_tbl_t。具体实现可以参考find_cmd函数。</p>
+<h2 id="2-u-boot">2. U-Boot驱动模型</h2>
+<p>&emsp;&emsp;U-Boot的驱动模型（Driver Model，简称DM）为驱动的定义和访问接口提供了统一的方法，提高了驱动之间的兼容性以及访问的标准。</p>
+<div class="admonition 说明">
+<p class="admonition-title">说明</p>
+<p>DM的详细说明见u-boot/doc/driver-model/README.txt。</p>
+</div>
+<p>&emsp;&emsp;DM中包含三个基本概念：Device、Driver和Uclass。</p>
+<ul>
+<li>Device</li>
+</ul>
+<p>&emsp;&emsp;Device指设备对象。每个Device绑定到一个具体的端口或外设，在README中的说明如下：</p>
+<blockquote>
+<p>Device - an instance of a driver, tied to a particular port or peripheral.</p>
+</blockquote>
+<ul>
+<li>Driver</li>
+</ul>
+<p>&emsp;&emsp;Driver指设备驱动。Driver实现和底层硬件设备的通信，并且为设备提供上层访问接口，在README中的说明如下：</p>
+<blockquote>
+<p>Driver - some code which talks to a peripheral and presents a higher-level interface to it.</p>
+</blockquote>
+<div class="admonition 举个栗子">
+<p class="admonition-title">举个栗子</p>
+<p>RK3399的GPIO Driver提供了gpio_direction_input、gpio_direction_output和gpio_get_value等接口。</p>
+</div>
+<ul>
+<li>Uclass</li>
+</ul>
+<p>&emsp;&emsp;Uclass为同一组类型的设备提供统一接口，在README中的说明如下：</p>
+<blockquote>
+<p>Uclass - a group of devices which operate in the same way. A uclass provides a way of accessing individual devices within the group, but always using the same interface. For example a GPIO uclass provides operations for get/set value. An I2C uclass may have 10 I2C ports, 4 with one driver, and 6 with another.</p>
+</blockquote>
+<div class="admonition 举个栗子">
+<p class="admonition-title">举个栗子</p>
+<p>GPIO Uclass提供了gpio_request和gpio_free接口</p>
+</div>
+<h2 id="3-u-bootgpio">3. U-Boot中的GPIO驱动模型</h2>
+<p>&emsp;&emsp;GPIO的驱动模型主要包括GPIO Core、GPIO Uclass、GPIO Udevice和GPIO Udriver四部分，如下图所示。</p>
+<p><center><img src="../assets/2-3.svg" width = 500></center></p>
+<ul>
+<li>GPIO Core（实现：u-boot/drivers/gpio/gpio-uclass.c）</li>
+</ul>
+<p>&emsp;&emsp;GPIO Core为上层提供GPIO设备的访问接口。GPIO Core从设备树arch/arm/dts/rk3399.dtsi中获取GPIO属性，并从GPIO Uclass的设备链表中获取相应的Udevice设备。</p>
+<ul>
+<li>GPIO Uclass（实现：u-boot/drivers/gpio/gpio-uclass.c）</li>
+</ul>
+<p>&emsp;&emsp;GPIO Uclass为GPIO Udevice的驱动提供统一的操作集接口，并链接属于该Uclass的所有GPIO Udevice设备。</p>
+<ul>
+<li>GPIO Udevice（实现：u-boot/drivers/gpio/rk_gpio.c）</li>
+</ul>
+<p>&emsp;&emsp;RK3399共有5组GPIO bank，每组包含32个IO接口。其中，每个GPIO bank都有一个GPIO Udevice与之对应。</p>
+<div class="highlight"><pre><span></span><code><span class="k">enum</span> <span class="p">{</span>
+    <span class="n">ROCKCHIP_GPIOS_PER_BANK</span> <span class="o">=</span> <span class="mi">32</span><span class="p">,</span>
+<span class="p">};</span>
+
+<span class="k">static</span> <span class="kt">int</span> <span class="n">rockchip_gpio_probe</span><span class="p">(</span><span class="k">struct</span> <span class="nc">udevice</span> <span class="o">*</span><span class="n">dev</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">struct</span> <span class="nc">gpio_dev_priv</span> <span class="o">*</span><span class="n">uc_priv</span> <span class="o">=</span> <span class="n">dev_get_uclass_priv</span><span class="p">(</span><span class="n">dev</span><span class="p">);</span>
+    <span class="k">struct</span> <span class="nc">rockchip_gpio_priv</span> <span class="o">*</span><span class="n">priv</span> <span class="o">=</span> <span class="n">dev_get_priv</span><span class="p">(</span><span class="n">dev</span><span class="p">);</span>
+    <span class="kt">char</span> <span class="o">*</span><span class="n">end</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">ret</span><span class="p">;</span>
+
+    <span class="n">priv</span><span class="o">-&gt;</span><span class="n">regs</span> <span class="o">=</span> <span class="n">dev_read_addr_ptr</span><span class="p">(</span><span class="n">dev</span><span class="p">);</span>
+    <span class="n">ret</span> <span class="o">=</span> <span class="n">uclass_first_device_err</span><span class="p">(</span><span class="n">UCLASS_PINCTRL</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">priv</span><span class="o">-&gt;</span><span class="n">pinctrl</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">ret</span><span class="p">)</span> <span class="k">return</span> <span class="n">ret</span><span class="p">;</span>
+
+    <span class="n">uc_priv</span><span class="o">-&gt;</span><span class="n">gpio_count</span> <span class="o">=</span> <span class="n">ROCKCHIP_GPIOS_PER_BANK</span><span class="p">;</span>
+    <span class="n">end</span> <span class="o">=</span> <span class="n">strrchr</span><span class="p">(</span><span class="n">dev</span><span class="o">-&gt;</span><span class="n">name</span><span class="p">,</span> <span class="sc">&#39;@&#39;</span><span class="p">);</span>
+    <span class="n">priv</span><span class="o">-&gt;</span><span class="n">bank</span> <span class="o">=</span> <span class="n">trailing_strtoln</span><span class="p">(</span><span class="n">dev</span><span class="o">-&gt;</span><span class="n">name</span><span class="p">,</span> <span class="n">end</span><span class="p">);</span>
+    <span class="n">priv</span><span class="o">-&gt;</span><span class="n">name</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="sc">&#39;A&#39;</span> <span class="o">+</span> <span class="n">priv</span><span class="o">-&gt;</span><span class="n">bank</span><span class="p">;</span>
+    <span class="n">uc_priv</span><span class="o">-&gt;</span><span class="n">bank_name</span> <span class="o">=</span> <span class="n">priv</span><span class="o">-&gt;</span><span class="n">name</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">U_BOOT_DRIVER</span><span class="p">(</span><span class="n">gpio_rockchip</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="s">&quot;gpio_rockchip&quot;</span><span class="p">,</span>
+    <span class="p">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">UCLASS_GPIO</span><span class="p">,</span>
+    <span class="p">.</span><span class="n">of_match</span> <span class="o">=</span> <span class="n">rockchip_gpio_ids</span><span class="p">,</span>
+    <span class="p">.</span><span class="n">ops</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">gpio_rockchip_ops</span><span class="p">,</span>
+    <span class="p">.</span><span class="n">priv_auto_alloc_size</span> <span class="o">=</span> <span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span> <span class="nc">rockchip_gpio_priv</span><span class="p">),</span>
+    <span class="p">.</span><span class="n">probe</span> <span class="o">=</span> <span class="n">rockchip_gpio_probe</span><span class="p">,</span>
+<span class="p">};</span>
+</code></pre></div>
+<ul>
+<li>GPIO Udriver（实现：u-boot/drivers/gpio/rk_gpio.c）</li>
+</ul>
+<p>&emsp;&emsp;已知RK3399共有5组GPIO bank，每组包含32个IO接口。GPIO驱动模型使用bank内偏移来表示具体的GPIO编号。GPIO Udriver根据bank编号和bank内偏移找到对应的GPIO，并对相应寄存器的相应比特位进行操作。</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../overview/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  上一页
+                </span>
+                实验概述
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../gpio/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  下一页
+                </span>
+                U-Boot操作GPIO
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2019 - 2021 哈尔滨工业大学（深圳）
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/vendor.7e0ee788.min.js"></script>
+      <script src="../../assets/javascripts/bundle.b3a72adc.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../..",
+          features: ['navigation.tabs'],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.4ac00218.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>

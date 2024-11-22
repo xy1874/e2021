@@ -1,0 +1,1264 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.1.5">
+    
+    
+      
+        <title>I2C协议及驱动概述 - 嵌入式计算实验（2021春季） | 哈工大（深圳）</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.21aed14c.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.196e0c26.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#7e56c2">
+        
+      
+    
+    
+    
+      
+        
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="deep-purple" data-md-color-accent="deep-purple">
+      
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#i2c" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="../.." title="嵌入式计算实验（2021春季） | 哈工大（深圳）" class="md-header-nav__button md-logo" aria-label="嵌入式计算实验（2021春季） | 哈工大（深圳）">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M220.8 123.3c1 .5 1.8 1.7 3 1.7 1.1 0 2.8-.4 2.9-1.5.2-1.4-1.9-2.3-3.2-2.9-1.7-.7-3.9-1-5.5-.1-.4.2-.8.7-.6 1.1.3 1.3 2.3 1.1 3.4 1.7zm-21.9 1.7c1.2 0 2-1.2 3-1.7 1.1-.6 3.1-.4 3.5-1.6.2-.4-.2-.9-.6-1.1-1.6-.9-3.8-.6-5.5.1-1.3.6-3.4 1.5-3.2 2.9.1 1 1.8 1.5 2.8 1.4zM420 403.8c-3.6-4-5.3-11.6-7.2-19.7-1.8-8.1-3.9-16.8-10.5-22.4-1.3-1.1-2.6-2.1-4-2.9-1.3-.8-2.7-1.5-4.1-2 9.2-27.3 5.6-54.5-3.7-79.1-11.4-30.1-31.3-56.4-46.5-74.4-17.1-21.5-33.7-41.9-33.4-72C311.1 85.4 315.7.1 234.8 0 132.4-.2 158 103.4 156.9 135.2c-1.7 23.4-6.4 41.8-22.5 64.7-18.9 22.5-45.5 58.8-58.1 96.7-6 17.9-8.8 36.1-6.2 53.3-6.5 5.8-11.4 14.7-16.6 20.2-4.2 4.3-10.3 5.9-17 8.3s-14 6-18.5 14.5c-2.1 3.9-2.8 8.1-2.8 12.4 0 3.9.6 7.9 1.2 11.8 1.2 8.1 2.5 15.7.8 20.8-5.2 14.4-5.9 24.4-2.2 31.7 3.8 7.3 11.4 10.5 20.1 12.3 17.3 3.6 40.8 2.7 59.3 12.5 19.8 10.4 39.9 14.1 55.9 10.4 11.6-2.6 21.1-9.6 25.9-20.2 12.5-.1 26.3-5.4 48.3-6.6 14.9-1.2 33.6 5.3 55.1 4.1.6 2.3 1.4 4.6 2.5 6.7v.1c8.3 16.7 23.8 24.3 40.3 23 16.6-1.3 34.1-11 48.3-27.9 13.6-16.4 36-23.2 50.9-32.2 7.4-4.5 13.4-10.1 13.9-18.3.4-8.2-4.4-17.3-15.5-29.7zM223.7 87.3c9.8-22.2 34.2-21.8 44-.4 6.5 14.2 3.6 30.9-4.3 40.4-1.6-.8-5.9-2.6-12.6-4.9 1.1-1.2 3.1-2.7 3.9-4.6 4.8-11.8-.2-27-9.1-27.3-7.3-.5-13.9 10.8-11.8 23-4.1-2-9.4-3.5-13-4.4-1-6.9-.3-14.6 2.9-21.8zM183 75.8c10.1 0 20.8 14.2 19.1 33.5-3.5 1-7.1 2.5-10.2 4.6 1.2-8.9-3.3-20.1-9.6-19.6-8.4.7-9.8 21.2-1.8 28.1 1 .8 1.9-.2-5.9 5.5-15.6-14.6-10.5-52.1 8.4-52.1zm-13.6 60.7c6.2-4.6 13.6-10 14.1-10.5 4.7-4.4 13.5-14.2 27.9-14.2 7.1 0 15.6 2.3 25.9 8.9 6.3 4.1 11.3 4.4 22.6 9.3 8.4 3.5 13.7 9.7 10.5 18.2-2.6 7.1-11 14.4-22.7 18.1-11.1 3.6-19.8 16-38.2 14.9-3.9-.2-7-1-9.6-2.1-8-3.5-12.2-10.4-20-15-8.6-4.8-13.2-10.4-14.7-15.3-1.4-4.9 0-9 4.2-12.3zm3.3 334c-2.7 35.1-43.9 34.4-75.3 18-29.9-15.8-68.6-6.5-76.5-21.9-2.4-4.7-2.4-12.7 2.6-26.4v-.2c2.4-7.6.6-16-.6-23.9-1.2-7.8-1.8-15 .9-20 3.5-6.7 8.5-9.1 14.8-11.3 10.3-3.7 11.8-3.4 19.6-9.9 5.5-5.7 9.5-12.9 14.3-18 5.1-5.5 10-8.1 17.7-6.9 8.1 1.2 15.1 6.8 21.9 16l19.6 35.6c9.5 19.9 43.1 48.4 41 68.9zm-1.4-25.9c-4.1-6.6-9.6-13.6-14.4-19.6 7.1 0 14.2-2.2 16.7-8.9 2.3-6.2 0-14.9-7.4-24.9-13.5-18.2-38.3-32.5-38.3-32.5-13.5-8.4-21.1-18.7-24.6-29.9s-3-23.3-.3-35.2c5.2-22.9 18.6-45.2 27.2-59.2 2.3-1.7.8 3.2-8.7 20.8-8.5 16.1-24.4 53.3-2.6 82.4.6-20.7 5.5-41.8 13.8-61.5 12-27.4 37.3-74.9 39.3-112.7 1.1.8 4.6 3.2 6.2 4.1 4.6 2.7 8.1 6.7 12.6 10.3 12.4 10 28.5 9.2 42.4 1.2 6.2-3.5 11.2-7.5 15.9-9 9.9-3.1 17.8-8.6 22.3-15 7.7 30.4 25.7 74.3 37.2 95.7 6.1 11.4 18.3 35.5 23.6 64.6 3.3-.1 7 .4 10.9 1.4 13.8-35.7-11.7-74.2-23.3-84.9-4.7-4.6-4.9-6.6-2.6-6.5 12.6 11.2 29.2 33.7 35.2 59 2.8 11.6 3.3 23.7.4 35.7 16.4 6.8 35.9 17.9 30.7 34.8-2.2-.1-3.2 0-4.2 0 3.2-10.1-3.9-17.6-22.8-26.1-19.6-8.6-36-8.6-38.3 12.5-12.1 4.2-18.3 14.7-21.4 27.3-2.8 11.2-3.6 24.7-4.4 39.9-.5 7.7-3.6 18-6.8 29-32.1 22.9-76.7 32.9-114.3 7.2zm257.4-11.5c-.9 16.8-41.2 19.9-63.2 46.5-13.2 15.7-29.4 24.4-43.6 25.5s-26.5-4.8-33.7-19.3c-4.7-11.1-2.4-23.1 1.1-36.3 3.7-14.2 9.2-28.8 9.9-40.6.8-15.2 1.7-28.5 4.2-38.7 2.6-10.3 6.6-17.2 13.7-21.1.3-.2.7-.3 1-.5.8 13.2 7.3 26.6 18.8 29.5 12.6 3.3 30.7-7.5 38.4-16.3 9-.3 15.7-.9 22.6 5.1 9.9 8.5 7.1 30.3 17.1 41.6 10.6 11.6 14 19.5 13.7 24.6zM173.3 148.7c2 1.9 4.7 4.5 8 7.1 6.6 5.2 15.8 10.6 27.3 10.6 11.6 0 22.5-5.9 31.8-10.8 4.9-2.6 10.9-7 14.8-10.4s5.9-6.3 3.1-6.6-2.6 2.6-6 5.1c-4.4 3.2-9.7 7.4-13.9 9.8-7.4 4.2-19.5 10.2-29.9 10.2s-18.7-4.8-24.9-9.7c-3.1-2.5-5.7-5-7.7-6.9-1.5-1.4-1.9-4.6-4.3-4.9-1.4-.1-1.8 3.7 1.7 6.5z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            嵌入式计算实验（2021春季） | 哈工大（深圳）
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              I2C协议及驱动概述
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://gitee.com/hitsz-cslab/embSys" title="前往 GitHub 仓库" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    EmbSys
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+
+  
+
+<nav class="md-tabs md-tabs--active" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+    
+    <a href="../.." class="md-tabs__link">
+      实验须知
+    </a>
+  </li>
+
+      
+        
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+      
+      <a href="../../GW3399/part1/" class="md-tabs__link">
+        实验平台简介
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+      
+      <a href="../../BootLoader/overview/" class="md-tabs__link">
+        BootLoader启动流程分析
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+      
+      <a href="../../lab1/overview/" class="md-tabs__link">
+        Lab1：Linux内核编译及烧录
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+      
+      <a href="../../lab2/overview/" class="md-tabs__link">
+        Lab2：U-Boot编程
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+      
+        
+      
+      <a href="../overview/" class="md-tabs__link md-tabs__link--active">
+        Lab3：基于HiLens的口罩识别系统设计
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="嵌入式计算实验（2021春季） | 哈工大（深圳）" class="md-nav__button md-logo" aria-label="嵌入式计算实验（2021春季） | 哈工大（深圳）">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M220.8 123.3c1 .5 1.8 1.7 3 1.7 1.1 0 2.8-.4 2.9-1.5.2-1.4-1.9-2.3-3.2-2.9-1.7-.7-3.9-1-5.5-.1-.4.2-.8.7-.6 1.1.3 1.3 2.3 1.1 3.4 1.7zm-21.9 1.7c1.2 0 2-1.2 3-1.7 1.1-.6 3.1-.4 3.5-1.6.2-.4-.2-.9-.6-1.1-1.6-.9-3.8-.6-5.5.1-1.3.6-3.4 1.5-3.2 2.9.1 1 1.8 1.5 2.8 1.4zM420 403.8c-3.6-4-5.3-11.6-7.2-19.7-1.8-8.1-3.9-16.8-10.5-22.4-1.3-1.1-2.6-2.1-4-2.9-1.3-.8-2.7-1.5-4.1-2 9.2-27.3 5.6-54.5-3.7-79.1-11.4-30.1-31.3-56.4-46.5-74.4-17.1-21.5-33.7-41.9-33.4-72C311.1 85.4 315.7.1 234.8 0 132.4-.2 158 103.4 156.9 135.2c-1.7 23.4-6.4 41.8-22.5 64.7-18.9 22.5-45.5 58.8-58.1 96.7-6 17.9-8.8 36.1-6.2 53.3-6.5 5.8-11.4 14.7-16.6 20.2-4.2 4.3-10.3 5.9-17 8.3s-14 6-18.5 14.5c-2.1 3.9-2.8 8.1-2.8 12.4 0 3.9.6 7.9 1.2 11.8 1.2 8.1 2.5 15.7.8 20.8-5.2 14.4-5.9 24.4-2.2 31.7 3.8 7.3 11.4 10.5 20.1 12.3 17.3 3.6 40.8 2.7 59.3 12.5 19.8 10.4 39.9 14.1 55.9 10.4 11.6-2.6 21.1-9.6 25.9-20.2 12.5-.1 26.3-5.4 48.3-6.6 14.9-1.2 33.6 5.3 55.1 4.1.6 2.3 1.4 4.6 2.5 6.7v.1c8.3 16.7 23.8 24.3 40.3 23 16.6-1.3 34.1-11 48.3-27.9 13.6-16.4 36-23.2 50.9-32.2 7.4-4.5 13.4-10.1 13.9-18.3.4-8.2-4.4-17.3-15.5-29.7zM223.7 87.3c9.8-22.2 34.2-21.8 44-.4 6.5 14.2 3.6 30.9-4.3 40.4-1.6-.8-5.9-2.6-12.6-4.9 1.1-1.2 3.1-2.7 3.9-4.6 4.8-11.8-.2-27-9.1-27.3-7.3-.5-13.9 10.8-11.8 23-4.1-2-9.4-3.5-13-4.4-1-6.9-.3-14.6 2.9-21.8zM183 75.8c10.1 0 20.8 14.2 19.1 33.5-3.5 1-7.1 2.5-10.2 4.6 1.2-8.9-3.3-20.1-9.6-19.6-8.4.7-9.8 21.2-1.8 28.1 1 .8 1.9-.2-5.9 5.5-15.6-14.6-10.5-52.1 8.4-52.1zm-13.6 60.7c6.2-4.6 13.6-10 14.1-10.5 4.7-4.4 13.5-14.2 27.9-14.2 7.1 0 15.6 2.3 25.9 8.9 6.3 4.1 11.3 4.4 22.6 9.3 8.4 3.5 13.7 9.7 10.5 18.2-2.6 7.1-11 14.4-22.7 18.1-11.1 3.6-19.8 16-38.2 14.9-3.9-.2-7-1-9.6-2.1-8-3.5-12.2-10.4-20-15-8.6-4.8-13.2-10.4-14.7-15.3-1.4-4.9 0-9 4.2-12.3zm3.3 334c-2.7 35.1-43.9 34.4-75.3 18-29.9-15.8-68.6-6.5-76.5-21.9-2.4-4.7-2.4-12.7 2.6-26.4v-.2c2.4-7.6.6-16-.6-23.9-1.2-7.8-1.8-15 .9-20 3.5-6.7 8.5-9.1 14.8-11.3 10.3-3.7 11.8-3.4 19.6-9.9 5.5-5.7 9.5-12.9 14.3-18 5.1-5.5 10-8.1 17.7-6.9 8.1 1.2 15.1 6.8 21.9 16l19.6 35.6c9.5 19.9 43.1 48.4 41 68.9zm-1.4-25.9c-4.1-6.6-9.6-13.6-14.4-19.6 7.1 0 14.2-2.2 16.7-8.9 2.3-6.2 0-14.9-7.4-24.9-13.5-18.2-38.3-32.5-38.3-32.5-13.5-8.4-21.1-18.7-24.6-29.9s-3-23.3-.3-35.2c5.2-22.9 18.6-45.2 27.2-59.2 2.3-1.7.8 3.2-8.7 20.8-8.5 16.1-24.4 53.3-2.6 82.4.6-20.7 5.5-41.8 13.8-61.5 12-27.4 37.3-74.9 39.3-112.7 1.1.8 4.6 3.2 6.2 4.1 4.6 2.7 8.1 6.7 12.6 10.3 12.4 10 28.5 9.2 42.4 1.2 6.2-3.5 11.2-7.5 15.9-9 9.9-3.1 17.8-8.6 22.3-15 7.7 30.4 25.7 74.3 37.2 95.7 6.1 11.4 18.3 35.5 23.6 64.6 3.3-.1 7 .4 10.9 1.4 13.8-35.7-11.7-74.2-23.3-84.9-4.7-4.6-4.9-6.6-2.6-6.5 12.6 11.2 29.2 33.7 35.2 59 2.8 11.6 3.3 23.7.4 35.7 16.4 6.8 35.9 17.9 30.7 34.8-2.2-.1-3.2 0-4.2 0 3.2-10.1-3.9-17.6-22.8-26.1-19.6-8.6-36-8.6-38.3 12.5-12.1 4.2-18.3 14.7-21.4 27.3-2.8 11.2-3.6 24.7-4.4 39.9-.5 7.7-3.6 18-6.8 29-32.1 22.9-76.7 32.9-114.3 7.2zm257.4-11.5c-.9 16.8-41.2 19.9-63.2 46.5-13.2 15.7-29.4 24.4-43.6 25.5s-26.5-4.8-33.7-19.3c-4.7-11.1-2.4-23.1 1.1-36.3 3.7-14.2 9.2-28.8 9.9-40.6.8-15.2 1.7-28.5 4.2-38.7 2.6-10.3 6.6-17.2 13.7-21.1.3-.2.7-.3 1-.5.8 13.2 7.3 26.6 18.8 29.5 12.6 3.3 30.7-7.5 38.4-16.3 9-.3 15.7-.9 22.6 5.1 9.9 8.5 7.1 30.3 17.1 41.6 10.6 11.6 14 19.5 13.7 24.6zM173.3 148.7c2 1.9 4.7 4.5 8 7.1 6.6 5.2 15.8 10.6 27.3 10.6 11.6 0 22.5-5.9 31.8-10.8 4.9-2.6 10.9-7 14.8-10.4s5.9-6.3 3.1-6.6-2.6 2.6-6 5.1c-4.4 3.2-9.7 7.4-13.9 9.8-7.4 4.2-19.5 10.2-29.9 10.2s-18.7-4.8-24.9-9.7c-3.1-2.5-5.7-5-7.7-6.9-1.5-1.4-1.9-4.6-4.3-4.9-1.4-.1-1.8 3.7 1.7 6.5z"/></svg>
+
+    </a>
+    嵌入式计算实验（2021春季） | 哈工大（深圳）
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://gitee.com/hitsz-cslab/embSys" title="前往 GitHub 仓库" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    EmbSys
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." class="md-nav__link">
+      实验须知
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../ojguide/" class="md-nav__link">
+      作业提交说明
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" >
+    <label class="md-nav__link" for="nav-3">
+      实验平台简介
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="实验平台简介" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon"></span>
+        实验平台简介
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../GW3399/part1/" class="md-nav__link">
+      GW3399简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../GW3399/part2/" class="md-nav__link">
+      远程登录方法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../GW3399/part3/" class="md-nav__link">
+      常用的LINUX命令
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../GW3399/part4/" class="md-nav__link">
+      系统固件更新
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" >
+    <label class="md-nav__link" for="nav-4">
+      BootLoader启动流程分析
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="BootLoader启动流程分析" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon"></span>
+        BootLoader启动流程分析
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../BootLoader/overview/" class="md-nav__link">
+      BootLoader概述
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../BootLoader/theory/" class="md-nav__link">
+      RK3399 BootLoader的启动过程
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" >
+    <label class="md-nav__link" for="nav-5">
+      Lab1：Linux内核编译及烧录
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Lab1：Linux内核编译及烧录" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon"></span>
+        Lab1：Linux内核编译及烧录
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../lab1/overview/" class="md-nav__link">
+      实验概述
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../lab1/theory/" class="md-nav__link">
+      实验原理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../lab1/step/" class="md-nav__link">
+      实现步骤
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../lab1/submit/" class="md-nav__link">
+      验收与提交
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" >
+    <label class="md-nav__link" for="nav-6">
+      Lab2：U-Boot编程
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Lab2：U-Boot编程" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        <span class="md-nav__icon md-icon"></span>
+        Lab2：U-Boot编程
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../lab2/overview/" class="md-nav__link">
+      实验概述
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6-2" type="checkbox" id="nav-6-2" >
+    <label class="md-nav__link" for="nav-6-2">
+      实验原理
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="实验原理" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-2">
+        <span class="md-nav__icon md-icon"></span>
+        实验原理
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../lab2/uboot/" class="md-nav__link">
+      U-Boot命令实现及驱动模型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../lab2/gpio/" class="md-nav__link">
+      U-Boot操作GPIO
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../lab2/step/" class="md-nav__link">
+      实验步骤
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../lab2/submit/" class="md-nav__link">
+      验收与提交
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7" checked>
+    <label class="md-nav__link" for="nav-7">
+      Lab3：基于HiLens的口罩识别系统设计
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Lab3：基于HiLens的口罩识别系统设计" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        <span class="md-nav__icon md-icon"></span>
+        Lab3：基于HiLens的口罩识别系统设计
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../overview/" class="md-nav__link">
+      实验概述
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7-2" type="checkbox" id="nav-7-2" checked>
+    <label class="md-nav__link" for="nav-7-2">
+      实验原理
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="实验原理" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-2">
+        <span class="md-nav__icon md-icon"></span>
+        实验原理
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        I2C协议及驱动概述
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" class="md-nav__link md-nav__link--active">
+      I2C协议及驱动概述
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-i2c" class="md-nav__link">
+    1. I2C协议概述
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-rk3399-i2c" class="md-nav__link">
+    2. RK3399 I2C接口
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-linuxi2c" class="md-nav__link">
+    3.  Linux的I2C驱动框架分析
+  </a>
+  
+    <nav class="md-nav" aria-label="3.  Linux的I2C驱动框架分析">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-i2c" class="md-nav__link">
+    3.1  I2C体系结构
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-i2c" class="md-nav__link">
+    3.2  I2C驱动几个重要的对象
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-oled" class="md-nav__link">
+    4.  OLED设备介绍
+  </a>
+  
+    <nav class="md-nav" aria-label="4.  OLED设备介绍">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-oled" class="md-nav__link">
+    4.1  OLED硬件介绍
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-oled" class="md-nav__link">
+    4.2  OLED的读写操作
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-ssd1316" class="md-nav__link">
+    5. SSD1316的裸机驱动代码
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../hilens/" class="md-nav__link">
+      基于HiLens的口罩识别
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../step/" class="md-nav__link">
+      实验步骤
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../submit/" class="md-nav__link">
+      验收与提交
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-i2c" class="md-nav__link">
+    1. I2C协议概述
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-rk3399-i2c" class="md-nav__link">
+    2. RK3399 I2C接口
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-linuxi2c" class="md-nav__link">
+    3.  Linux的I2C驱动框架分析
+  </a>
+  
+    <nav class="md-nav" aria-label="3.  Linux的I2C驱动框架分析">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-i2c" class="md-nav__link">
+    3.1  I2C体系结构
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-i2c" class="md-nav__link">
+    3.2  I2C驱动几个重要的对象
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-oled" class="md-nav__link">
+    4.  OLED设备介绍
+  </a>
+  
+    <nav class="md-nav" aria-label="4.  OLED设备介绍">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-oled" class="md-nav__link">
+    4.1  OLED硬件介绍
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-oled" class="md-nav__link">
+    4.2  OLED的读写操作
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-ssd1316" class="md-nav__link">
+    5. SSD1316的裸机驱动代码
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="i2c">I2C协议及驱动概述</h1>
+<h2 id="1-i2c">1. I2C协议概述</h2>
+<p>&emsp;&emsp;I2C总线(Inter-Integrated Circuit Bus) 最早是由Philips半导体（现被NXP收购）开发的一种简单、双向二线制同步串行总线。它只需要两根线（串行数据线SDA和时钟线SCL）即可在连接于总线上的器件之间传送信息。</p>
+<p>&emsp;&emsp;要想了解详细I2C协议，可以参考2014年第6版本的I2C标准协议：
+<a href="https://www.nxp.com/docs/en/user-guide/UM10204.pdf">I2C-Bus Standards Specification</a></p>
+<p>&emsp;&emsp;I2C是串行传输总线，按照下面格式进行一位一位传输。协议如下：</p>
+<p><img alt="3-1" src="../assets/3-1.PNG" /></p>
+<h2 id="2-rk3399-i2c">2. RK3399 I2C接口</h2>
+<p>&emsp;&emsp;RK3399 CPU提供了有9组I2C总线接口：i2c0 ~ i2c8，需要注意的是，在每一组I2C总线中接入的从设备地址不能有相同。在本次实验中，OLED显示屏和Led8x8点阵都挂到I2C2（I2C Adaptor 2）总线接口上。</p>
+<p><img alt="3-2" src="../assets/3-2.PNG" /></p>
+<p>&emsp;&emsp;I2C从设备地址（slave address）用7位标识。</p>
+<ul>
+<li>OLED从设备地址</li>
+</ul>
+<p>&emsp;&emsp;OLED芯片型号：SSD1316，查该芯片手册可以知道其slave address：</p>
+<div class="highlight"><pre><span></span><code>b7  b6  b5  b4  b3  b2  b1  b0
+0   1   1   1   1   0   SA0 R/W#
+</code></pre></div>
+<p>&emsp;&emsp;其中SA0是由硬件设置为0，最低位b0是读写标志位，因此，SSD1316（OLED）从设备地址是0x78&gt;&gt;1 = 0x3C。</p>
+<ul>
+<li>Led 8x8点阵从设备地址</li>
+</ul>
+<p>&emsp;&emsp;Led 8x8点阵芯片型号：ht16k33，查该芯片手册可以知道其slave address：</p>
+<div class="highlight"><pre><span></span><code>b7  b6  b5  b4  b3  b2  b1  b0
+1   1   1   0   0   0   0   R/W#
+</code></pre></div>
+<p>&emsp;&emsp;最低位b0是读写标志位，因此，ht16k33（Led 8x8）从设备地址是0xE0&gt;&gt;1 = 0x70。</p>
+<h2 id="3-linuxi2c">3.  Linux的I2C驱动框架分析</h2>
+<h3 id="31-i2c">3.1  I2C体系结构</h3>
+<p>&emsp;&emsp;Linux的I2C体系结构分为3个组成部分（具体分析可以参考陈文智《嵌入式系统原理与设计》、宋宝华《Linux设备驱动开发详解》）：</p>
+<ul>
+<li><strong>I2C核心</strong>：drivers/i2c/i2c-core.c</li>
+</ul>
+<p>&emsp;&emsp;I2C核心提供了I2C总线驱动和设备驱动的注册，注销方法，I2C通信方法(”algorithm”)上层代码实现，探测设备，检测设备地址的上层代码实现。</p>
+<p>&emsp;&emsp;一般来说，drivers/i2c/i2c-core.c这个文件不需要被开发人员修改，但是理解其中的函数是非常有必要的。</p>
+<ul>
+<li><strong>I2C总线驱动</strong>：drivers/i2c/busses/i2c-rk3x.c</li>
+</ul>
+<p>&emsp;&emsp;I2C总线驱动是对I2C硬件体系结构中适配器端的实现，适配器可由CPU控制，甚至可以直接集成在CPU内部。</p>
+<p>&emsp;&emsp;I2C总线驱动主要包含I2C适配器数据结构i2c_adapter、I2C适配器的Algorithm数据结构i2c_algorithm和控制I2C适配器产生通信信号的函数。经由I2C总线驱动的代码，我们可以控制I2C适配器以主控方式产生开始位、停止位、读写周期，以及以从设备方式被读写、产生ACK等。</p>
+<p>&emsp;&emsp;CPU芯片厂商一般都会提供I2C总线驱动代码，放在drivers/i2c/busses目录。如果在这个目录下没有找到相关CPU的驱动代码，还需要驱动人员自行编写。</p>
+<ul>
+<li><strong>I2C设备驱动</strong>：（<strong>需要实现</strong>）</li>
+</ul>
+<p>&emsp;&emsp;I2C设备驱动(也称为客户驱动)是对I2C硬件体系结构中设备端的实现，设备一般挂接在受CPU控制的I2C适配器上，通过I2C适配器与CPU交换数据。</p>
+<p>&emsp;&emsp;I2C设备驱动主要包含数据结构i2c_driver和i2c_client，我们需要根据具体设备实现其中的成员函数。</p>
+<p><center><img alt="3-3" src="../assets/3-3.png" /></center></p>
+<p>(图片来源于：<a href="https://www.jianshu.com/p/d1f30e4279d5">https://www.jianshu.com/p/d1f30e4279d5</a>)</p>
+<blockquote>
+<p><strong>为什么要分为I2C总线驱动程序与I2C设备驱动程序？</strong></p>
+<p>从硬件层次上来说，I2C的时序是永远不变的（如<a href="https://www.nxp.com/docs/en/user-guide/UM10204.pdf">I2C-Bus Standards Specification</a>标准已经制定好了），I2C总线驱动程序控制着I2C的时序。而对于I2C设备来说，其设备地址、控制命令、数据都是要根据具体的设备来确定的。比如，实验中提供的OLED和LED 8*8点阵的设备地址和控制命令/数据是不一样的。将总线驱动和设备驱动分开，总线驱动用于决定总线和设备之间如何发数据，而设备驱动决定总线与设备之间发什么数据。一个是怎么发数据，一个是发什么数据，这也体现了Linux内核所倡导的机制与策略分离的编程艺术。</p>
+<p>通过运用面向对象的设计思想，Linux内核将I2C总线适配器抽象出来，用i2c_adapter结构体表示；同时，也将I2C设备的信息抽象出来，用i2c_board_info结构体表示。通过i2c_adapter结构体与i2c_board_info结构体创建出一个i2c_client的结构体，这样，一个i2c_client就可以代表了一个抽象出来软件上可以操作的I2C设备。</p>
+</blockquote>
+<h3 id="32-i2c">3.2  I2C驱动几个重要的对象</h3>
+<ul>
+<li><strong>struct bus_type i2c_bus_type</strong> ：I2C总线对应着/sys/bus下的一条总线，这个I2C总线结构体管理着I2C设备与I2C总线驱动的匹配、删除等操作，I2C总线会调用i2c_device_match函数看I2C设备和I2C驱动是否匹配，如果匹配就调用i2c_device_probe函数，进而调用I2C驱动的probe函数。</li>
+<li><strong>struct i2c_board_info</strong>：描述了I2C设备的硬件信息</li>
+<li><strong>struct i2c_adapter</strong> ：对应I2C总线适配器</li>
+<li><strong>struct i2c_client</strong>：对应I2C设备</li>
+<li><strong>struct i2c_algorithm</strong>：对应如何发送I2C时序</li>
+<li><strong>struct i2c_driver</strong>：对应I2C设备驱动程序</li>
+</ul>
+<p>&emsp;&emsp;小结：</p>
+<ul>
+<li>i2c_driver与i2c_client</li>
+</ul>
+<p>&emsp;&emsp;i2c_driver对应一套驱动方法，i2c_client对应真实的物理设备，每个I2C设备都需要一个i2c_client来描述。i2c_driver与i2c_client的关系是一对多，一个i2c_driver可以支持多个同类型的i2c_client。</p>
+<ul>
+<li>i2c_adapter与i2c_client</li>
+</ul>
+<p>&emsp;&emsp;i2c_adapter与i2c_client的关系如上述所说，由于一个适配器可以连接多个I2C设备，所以一个i2c_adapter也可以被多个i2c_client依附。</p>
+<h2 id="4-oled">4.  OLED设备介绍</h2>
+<h3 id="41-oled">4.1  OLED硬件介绍</h3>
+<p>&emsp;&emsp;SSD1316（OLED）像素是96 * 32：</p>
+<p><img alt="3-4" src="../assets/3-4.PNG" /></p>
+<p>&emsp;&emsp;查SSD1316芯片手册，可以知道：</p>
+<blockquote>
+<p>There are 3 different memory addressing mode in SSD1316: page addressing mode, horizontal addressing mode and vertical addressing mode.</p>
+</blockquote>
+<p>&emsp;&emsp;本实验选择用Page addressing mode，即分成4个page，PAGE0 ~ PAGE3，每个page有8 Row。</p>
+<p><img alt="3-5" src="../assets/3-5.PNG" /></p>
+<p>&emsp;&emsp;也就是，可以用二维数组led_buf[4][96]来完成OLED 96 * 32像素的写操作：</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">m</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">m</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="p">;</span> <span class="n">m</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">ssd1316_write_command</span><span class="p">(</span><span class="mh">0xb0</span> <span class="o">+</span> <span class="n">m</span><span class="p">);</span> <span class="cm">/* Set the page start address of the target display location by command B0h to B3h. */</span>
+    <span class="n">ssd1316_write_command</span><span class="p">(</span><span class="mh">0x00</span><span class="p">);</span> <span class="cm">/* Set the lower start column address of pointer by command 00h */</span>
+    <span class="n">ssd1316_write_command</span><span class="p">(</span><span class="mh">0x10</span><span class="p">);</span> <span class="cm">/* Set the upper start column address of pointer by command 10h */</span>
+    <span class="n">ssd1316_write_data</span><span class="p">(</span><span class="n">led_buf</span><span class="p">[</span><span class="n">m</span><span class="p">]);</span> 
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="42-oled">4.2  OLED的读写操作</h3>
+<p>&emsp;&emsp;Linux内核通过i2c-dev.c提供了一个通用的I2C设备驱动程序，其主设备号都是89，次设备号为0 ~ 255。不过，它实现的是i2c_client是虚拟、临时的，主要是为了便于从用户空间操作I2C外设，实现了字符设备的文件操作接口，对设备的具体访问是通过I2C适配器来实现的。但是，这所有的操作数据都是基于字节流的，没有明确的格式和意义。如上所示，挂载在i2c上的OLED是按buffer块读写，不适合使用字节流来操作OLED。本次实验推荐同学们使用Linux内核提供的设备模型来访问OLED。</p>
+<p>&emsp;&emsp;设备模型是为了方便电源管理而设计的一种设备拓扑结构，其开发者为了方便调试，将设备结构树导出为一个文件系统，即sysfs文件系统。sysfs是一个基于RAM的文件系统，它和Kobject一起，可以将Kernel的数据结构导出到用户空间，以文件目录结构的形式，提供对这些数据结构（以及数据结构的属性）的访问支持。请阅读Documentation/filesystems/sysfs.txt 、Documentation/kobject.txt文档以获得更多关于sysfs和kobject 接口的信息。</p>
+<p>&emsp;&emsp;为了实现OLED按buffer块读写，推荐同学们使用BIN_ATTR_RW二进制属性文件。</p>
+<p>&emsp;&emsp;BIN_ATTR_RW是在include/linux/sysfs.h头文件中的宏定义</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#define BIN_ATTR_RW(_name, _size)       \</span>
+<span class="cp">struct bin_attribute bin_attr_##_name = __BIN_ATTR_RW(_name, _size)</span>
+</code></pre></div>
+<p>&emsp;&emsp;__BIN_ATTR_RW宏</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#define __BIN_ATTR_RW(_name, _size) __BIN_ATTR(_name,       \</span>
+<span class="cp">                    (S_IWUSR | S_IRUGO), _name##_read,      \</span>
+<span class="cp">                    _name##_write, _size)</span>
+</code></pre></div>
+<p>&emsp;&emsp;__BIN_ATTR宏</p>
+<div class="highlight"><pre><span></span><code><span class="cm">/* macros to create static binary attributes easier */</span>
+<span class="cp">#define __BIN_ATTR(_name, _mode, _read, _write, _size) {    \</span>
+<span class="cp">    .attr   = { .name = __stringify(_name), .mode = _mode },\</span>
+<span class="cp">    .read   = _read,        \</span>
+<span class="cp">    .write  = _write,       \</span>
+<span class="cp">    .size   = _size,        \</span>
+<span class="cp">}</span>
+</code></pre></div>
+<p>&emsp;&emsp;把BIN_ATTR_RW(buffer, 4*96)套入以上的宏定义，展开：</p>
+<div class="highlight"><pre><span></span><code><span class="k">struct</span> <span class="nc">bin_attribute</span> <span class="n">bin_attr_buffer</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="p">(</span><span class="n">S_IWUSR</span> <span class="o">|</span> <span class="n">S_IRUGO</span><span class="p">),</span> <span class="n">buffer_read</span><span class="p">,</span> <span class="n">buffer_write</span><span class="p">,</span> <span class="mi">4</span><span class="o">*</span><span class="mi">96</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">.</span><span class="n">attr</span> <span class="o">=</span> <span class="p">{</span> <span class="p">.</span><span class="n">buffer</span>   <span class="o">=</span> <span class="n">__stringify</span><span class="p">(</span><span class="n">buffer</span><span class="p">),</span> <span class="p">.</span><span class="n">mode</span>   <span class="o">=</span> <span class="p">(</span><span class="n">S_IWUSR</span> <span class="o">|</span> <span class="n">S_IRUGO</span><span class="p">)</span> <span class="p">},</span>     \
+    <span class="p">.</span><span class="n">read</span>   <span class="o">=</span> <span class="n">buffer_read</span><span class="p">,</span>      \
+    <span class="p">.</span><span class="n">write</span>  <span class="o">=</span> <span class="n">buffer_write</span><span class="p">,</span>     \
+    <span class="p">.</span><span class="n">size</span>   <span class="o">=</span> <span class="mi">4</span><span class="o">*</span><span class="mi">96</span><span class="p">,</span>             \
+<span class="p">}</span>
+</code></pre></div>
+<p>&emsp;&emsp;当应用层对“/sys/bus/i2c/devices/i2c-2/2-003c/buffer”文件进行read、write等操作时，进而会调用到buffer_read、buffer_write函数。其中i2c-2是OLED挂载到RK3399的i2c2总线上，2-003c代表i2c2总线，从设备地址为0x3c。</p>
+<div class="highlight"><pre><span></span><code><span class="kt">ssize_t</span> <span class="n">buffer_read</span><span class="p">(</span><span class="k">struct</span> <span class="nc">file</span> <span class="o">*</span><span class="n">f</span><span class="p">,</span> <span class="k">struct</span> <span class="nc">kobject</span> <span class="o">*</span><span class="n">k</span><span class="p">,</span> <span class="k">struct</span> <span class="nc">bin_attribute</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">buf</span><span class="p">,</span> <span class="n">loff_t</span> <span class="n">of</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">len</span><span class="p">)</span>
+
+    <span class="c1">//注：该函数可以直接将led_buf[4][96]拷贝给buf，即只需要读取设备驱动中的缓存。</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="kt">ssize_t</span> <span class="n">buffer_write</span><span class="p">(</span><span class="k">struct</span> <span class="nc">file</span> <span class="o">*</span><span class="n">f</span><span class="p">,</span> <span class="k">struct</span> <span class="nc">kobject</span> <span class="o">*</span><span class="n">k</span><span class="p">,</span> <span class="k">struct</span> <span class="nc">bin_attribute</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">buf</span><span class="p">,</span> <span class="n">loff_t</span> <span class="n">of</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">len</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="5-ssd1316">5. SSD1316的裸机驱动代码</h2>
+<p>&emsp;&emsp;由芯片手册可知，SSD1316的厂商已提供OLED的初始化配置、写命令和写数据流程，同学们需要参考厂商提供的驱动代码（针对无操作系统）来编写OLED的Linux I2C设备驱动程序。</p>
+<ul>
+<li>OLED初始化：在I2C设备驱动程序probe执行时，需要对OLED初始化。</li>
+<li>OLED写命令/写数据：请参照以下代码实现：</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1">// Internal setting（Charge pump）</span>
+<span class="kt">void</span> <span class="nf">sh1316</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">RES</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+    <span class="n">RES</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+
+    <span class="cm">/* 初始化配置 */</span> 
+    <span class="n">write_i</span><span class="p">(</span><span class="mh">0xAE</span><span class="p">);</span> <span class="cm">/*display off*/</span>
+    <span class="n">write_i</span><span class="p">(</span><span class="mh">0x00</span><span class="p">);</span> <span class="cm">/*set lower column address*/</span>
+    <span class="n">write_i</span><span class="p">(</span><span class="mh">0x10</span><span class="p">);</span> <span class="cm">/*set higher column address*/</span>
+    <span class="n">write_i</span><span class="p">(</span><span class="mh">0x40</span><span class="p">);</span> <span class="cm">/*set display start line*/</span>
+    <span class="n">write_i</span><span class="p">(</span><span class="mh">0xb0</span><span class="p">);</span> <span class="cm">/*set page address*/</span>
+    <span class="n">write_i</span><span class="p">(</span><span class="mh">0x81</span><span class="p">);</span> <span class="cm">/*contract control*/</span>
+    <span class="n">write_i</span><span class="p">(</span><span class="mh">0x60</span><span class="p">);</span> <span class="cm">/*128*/</span>
+    <span class="n">write_i</span><span class="p">(</span><span class="mh">0xA1</span><span class="p">);</span> <span class="cm">/*set segment remap*/</span>
+    <span class="n">write_i</span><span class="p">(</span><span class="mh">0xA6</span><span class="p">);</span> <span class="cm">/*normal / reverse*/</span>
+    <span class="n">write_i</span><span class="p">(</span><span class="mh">0xA8</span><span class="p">);</span> <span class="cm">/*multiplex ratio*/</span>
+    <span class="n">write_i</span><span class="p">(</span><span class="mh">0x1F</span><span class="p">);</span> <span class="cm">/*duty = 1/32*/</span>
+    <span class="n">write_i</span><span class="p">(</span><span class="mh">0xC0</span><span class="p">);</span> <span class="cm">/*Com scan direction*/</span>
+    <span class="n">write_i</span><span class="p">(</span><span class="mh">0xD3</span><span class="p">);</span> <span class="cm">/*set display offset*/</span>
+    <span class="n">write_i</span><span class="p">(</span><span class="mh">0x00</span><span class="p">);</span>
+    <span class="n">write_i</span><span class="p">(</span><span class="mh">0xD5</span><span class="p">);</span> <span class="cm">/*set osc division*/</span>
+    <span class="n">write_i</span><span class="p">(</span><span class="mh">0x80</span><span class="p">);</span>
+    <span class="n">write_i</span><span class="p">(</span><span class="mh">0xD9</span><span class="p">);</span> <span class="cm">/*set pre-charge period*/</span>
+    <span class="n">write_i</span><span class="p">(</span><span class="mh">0x22</span><span class="p">);</span>
+    <span class="n">write_i</span><span class="p">(</span><span class="mh">0xDA</span><span class="p">);</span> <span class="cm">/*set COM pins*/</span>
+    <span class="n">write_i</span><span class="p">(</span><span class="mh">0x12</span><span class="p">);</span>
+    <span class="n">write_i</span><span class="p">(</span><span class="mh">0xdb</span><span class="p">);</span> <span class="cm">/*set vcomh*/</span>
+    <span class="n">write_i</span><span class="p">(</span><span class="mh">0x40</span><span class="p">);</span>
+    <span class="n">write_i</span><span class="p">(</span><span class="mh">0x8d</span><span class="p">);</span> <span class="cm">/*set charge pump enable*/</span>
+    <span class="n">write_i</span><span class="p">(</span><span class="mh">0x15</span><span class="p">);</span> <span class="cm">/* 0X15，7.5V； 0X14，9V */</span>
+    <span class="n">write_i</span><span class="p">(</span><span class="mh">0xAF</span><span class="p">);</span> <span class="cm">/*display ON*/</span>
+<span class="p">}</span>
+
+<span class="c1">// 写时序</span>
+<span class="kt">void</span> <span class="nf">write_w</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">dat</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">m</span><span class="p">,</span><span class="n">da</span><span class="p">;</span>
+    <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">j</span><span class="p">;</span>
+    <span class="n">da</span> <span class="o">=</span> <span class="n">dat</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="mi">8</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">){</span>
+        <span class="n">m</span> <span class="o">=</span> <span class="n">da</span><span class="p">;</span>
+        <span class="n">SCL</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="n">m</span> <span class="o">=</span> <span class="n">m</span> <span class="o">&amp;</span> <span class="mh">0x80</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">m</span> <span class="o">==</span> <span class="mh">0x80</span><span class="p">)</span>
+            <span class="n">SDA</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+        <span class="k">else</span>
+            <span class="n">SDA</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="n">da</span> <span class="o">=</span> <span class="n">da</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="n">SCL</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">SCL</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">SCL</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">write_i</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">ins</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// 起始位</span>
+    <span class="n">start</span><span class="p">();</span>
+
+    <span class="cm">/* 写命令 */</span>
+    <span class="n">write_w</span><span class="p">(</span><span class="mh">0x78</span><span class="p">);</span>
+    <span class="n">write_w</span><span class="p">(</span><span class="mh">0x00</span><span class="p">);</span>
+    <span class="n">write_w</span><span class="p">(</span><span class="n">ins</span><span class="p">);</span>
+
+    <span class="c1">// 停止位</span>
+    <span class="n">stop</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">write_d</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">dat</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// 起始位</span>
+    <span class="n">start</span><span class="p">();</span>
+
+    <span class="cm">/* 写数据 */</span>
+    <span class="n">write_w</span><span class="p">(</span><span class="mh">0x78</span><span class="p">);</span>
+    <span class="n">write_w</span><span class="p">(</span><span class="mh">0x40</span><span class="p">);</span>
+    <span class="n">write_w</span><span class="p">(</span><span class="n">dat</span><span class="p">);</span>
+
+    <span class="c1">// 停止位</span>
+    <span class="n">stop</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">start</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">SCL</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="n">SDA</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="n">SDA</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">SCL</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">stop</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">SCL</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">SDA</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">SDA</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="n">SCL</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">delay</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">t</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">t</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="n">t</span><span class="o">--</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../overview/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  上一页
+                </span>
+                实验概述
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../hilens/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  下一页
+                </span>
+                基于HiLens的口罩识别
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2019 - 2021 哈尔滨工业大学（深圳）
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/vendor.7e0ee788.min.js"></script>
+      <script src="../../assets/javascripts/bundle.b3a72adc.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../..",
+          features: ['navigation.tabs'],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.4ac00218.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>
